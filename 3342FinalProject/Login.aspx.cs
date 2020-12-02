@@ -13,5 +13,20 @@ namespace _3342FinalProject
         {
 
         }
+
+        protected void btnView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSubmitLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

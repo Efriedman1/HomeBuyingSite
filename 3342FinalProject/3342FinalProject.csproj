@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Homepage.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="master.css" />
     <Content Include="MyProperties.aspx" />
     <Content Include="MyRentals.aspx" />
     <Content Include="Property.aspx" />
