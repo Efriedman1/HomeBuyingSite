@@ -11,7 +11,12 @@ namespace _3342FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            PropertyControl ctrl = (PropertyControl)LoadControl("PropertyControl.ascx");
+            ctrl.Name = "Name";
+            ctrl.Address = "474 Willow St";
+            ctrl.ImageUrl = "img/houses/00.jpg";
 
+            Form.Controls.Add(ctrl);
         }
     }
 }

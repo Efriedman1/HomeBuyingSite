@@ -68,6 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Homepage.aspx" />
+    <Content Include="img\houses\00.jpg" />
+    <Content Include="img\houses\01.jpg" />
+    <Content Include="img\houses\02.jpg" />
+    <Content Include="img\houses\03.jpg" />
+    <Content Include="img\houses\04.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="LoginControl.ascx" />
     <Content Include="master.css" />
@@ -75,7 +80,6 @@
     <Content Include="MyRentals.aspx" />
     <Content Include="Property.aspx" />
     <Content Include="PropertyControl.ascx" />
-    <Content Include="PropertyDisplayControl.ascx" />
     <Content Include="Signup.aspx" />
     <Content Include="Wallet.aspx" />
     <Content Include="Web.config" />
@@ -138,13 +142,6 @@
     <Compile Include="PropertyControl.ascx.designer.cs">
       <DependentUpon>PropertyControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="PropertyDisplayControl.ascx.cs">
-      <DependentUpon>PropertyDisplayControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PropertyDisplayControl.ascx.designer.cs">
-      <DependentUpon>PropertyDisplayControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -176,6 +173,7 @@
       <Name>PropertyLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

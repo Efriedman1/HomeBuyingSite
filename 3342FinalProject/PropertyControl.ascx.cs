@@ -9,13 +9,7 @@ using System.Web.UI.WebControls;
 namespace _3342FinalProject
 {
     public partial class PropertyControl : System.Web.UI.UserControl
-    {
-        String imageUrl;
-        String propertyName;
-        String propertyAddress;
-        String propertyDescription;
-        int bedAmount;
-        int bathAmount;
+    {  
         double rentAmount;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -26,43 +20,43 @@ namespace _3342FinalProject
         [Category("Misc")]
         public String ImageUrl
         {
-            get { return imageUrl; }
-            set { imageUrl = value; }
+            get { return imgProperty.ImageUrl; }
+            set { imgProperty.ImageUrl = value; }
         }
 
         [Category("Misc")]
         public String Name
         {
-            get { return propertyName; }
-            set { propertyName = value; }
+            get { return lblProperty.Text; }
+            set { lblProperty.Text = value; }
         }
 
         [Category("Misc")]
         public String Address
         {
-            get { return propertyAddress; }
-            set { propertyAddress = value; }
+            get { return lblAddress.Text; }
+            set { lblAddress.Text = value; }
         }
 
         [Category("Misc")]
         public String Description
         {
-            get { return propertyDescription; }
-            set { propertyDescription = value; }
+            get { return lblDescription.Text; }
+            set { lblDescription.Text = value; }
         }
 
         [Category("Misc")]
-        public int Beds
+        public String Beds
         {
-            get { return bedAmount; }
-            set { bedAmount = value; }
+            get { return lblBedAmount.Text ; }
+            set { lblBedAmount.Text = value; }
         }
 
         [Category("Misc")]
-        public int Baths
+        public String Baths
         {
-            get { return bathAmount; }
-            set { bathAmount = value; }
+            get { return lblBathAmount.Text; }
+            set { lblBathAmount.Text = value; }
         }
     }
 }
