@@ -69,13 +69,16 @@
   <ItemGroup>
     <Content Include="Homepage.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="LoginControl.ascx" />
     <Content Include="master.css" />
     <Content Include="MyProperties.aspx" />
     <Content Include="MyRentals.aspx" />
     <Content Include="Property.aspx" />
+    <Content Include="PropertyDisplayControl.ascx" />
     <Content Include="Signup.aspx" />
     <Content Include="Wallet.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebUserControl1.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Homepage.aspx.cs">
@@ -91,6 +94,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginControl.ascx.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginControl.ascx.designer.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
@@ -121,6 +131,13 @@
     <Compile Include="Property.aspx.designer.cs">
       <DependentUpon>Property.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PropertyDisplayControl.ascx.cs">
+      <DependentUpon>PropertyDisplayControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PropertyDisplayControl.ascx.designer.cs">
+      <DependentUpon>PropertyDisplayControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -134,6 +151,13 @@
     </Compile>
     <Compile Include="Wallet.aspx.designer.cs">
       <DependentUpon>Wallet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
