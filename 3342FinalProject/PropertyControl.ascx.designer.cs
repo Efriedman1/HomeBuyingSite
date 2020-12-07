@@ -10,7 +10,7 @@
 namespace _3342FinalProject {
     
     
-    public partial class Property {
+    public partial class PropertyControl {
         
         /// <summary>
         /// imgProperty control.
@@ -74,14 +74,5 @@ namespace _3342FinalProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDescription;
-        
-        /// <summary>
-        /// btnRent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRent;
     }
 }

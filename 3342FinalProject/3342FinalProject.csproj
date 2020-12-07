@@ -68,11 +68,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Homepage.aspx" />
+    <Content Include="img\houses\00.jpg" />
+    <Content Include="img\houses\01.jpg" />
+    <Content Include="img\houses\02.jpg" />
+    <Content Include="img\houses\03.jpg" />
+    <Content Include="img\houses\04.jpg" />
     <Content Include="Login.aspx" />
+    <Content Include="LoginControl.ascx" />
     <Content Include="master.css" />
     <Content Include="MyProperties.aspx" />
     <Content Include="MyRentals.aspx" />
     <Content Include="Property.aspx" />
+    <Content Include="PropertyControl.ascx" />
     <Content Include="Signup.aspx" />
     <Content Include="Wallet.aspx" />
     <Content Include="Web.config" />
@@ -91,6 +98,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginControl.ascx.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginControl.ascx.designer.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
@@ -121,6 +135,13 @@
     <Compile Include="Property.aspx.designer.cs">
       <DependentUpon>Property.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PropertyControl.ascx.cs">
+      <DependentUpon>PropertyControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PropertyControl.ascx.designer.cs">
+      <DependentUpon>PropertyControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master.Master" />
+    <Content Include="libman.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -152,6 +174,7 @@
       <Name>PropertyLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

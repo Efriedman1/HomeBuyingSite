@@ -7,14 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace _3342FinalProject
 {
-    public partial class Master : System.Web.UI.MasterPage
+    public partial class LoginScreen : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
         {
 
         }
