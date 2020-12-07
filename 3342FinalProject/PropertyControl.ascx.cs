@@ -5,16 +5,25 @@ using System.Web;
 using System.Web.UI;
 using System.ComponentModel;
 using System.Web.UI.WebControls;
+using PropertyLibrary;
+using System.Data;
 
 namespace _3342FinalProject
 {
     public partial class PropertyControl : System.Web.UI.UserControl
     {  
-        double rentAmount;
+        Utility utility;
+        int propertyID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public int PropertyID
+        {
+            get { return propertyID; }
+            set { propertyID = value; }
         }
 
         [Category("Misc")]
@@ -25,17 +34,17 @@ namespace _3342FinalProject
         }
 
         [Category("Misc")]
-        public String Name
-        {
-            get { return lblProperty.Text; }
-            set { lblProperty.Text = value; }
-        }
-
-        [Category("Misc")]
         public String Address
         {
             get { return lblAddress.Text; }
             set { lblAddress.Text = value; }
+        }
+
+        [Category("Misc")]
+        public String Rent
+        {
+            get { return lblRent.Text; }
+            set { lblRent.Text = value; }
         }
 
         [Category("Misc")]
@@ -57,6 +66,19 @@ namespace _3342FinalProject
         {
             get { return lblBathAmount.Text; }
             set { lblBathAmount.Text = value; }
+        }
+
+        public override void DataBind()
+        {
+            //Address, Rent, Beds, Baths, Description, ImageUrl
+            utility = new Utility();
+            utility.PrintToDebug(propertyID, "PropertyID");
+            DataRow propertyRow = utility.GetPropertyByID(propertyID).Tables[0].Rows[0];
+            lblAddress.Text = propertyRow[0].ToString();
+            lblRent.Text = propertyRow[1].ToString();
+            lblBedAmount.Text = propertyRow[2].ToString();
+            lblBathAmount.Text = propertyRow[3].ToString();
+            lblDescription.Text = propertyRow[4].ToString();
         }
     }
 }
