@@ -23,6 +23,7 @@ namespace _3342FinalProject
                 lblBedAmount.Text = propertyRow[2].ToString();
                 lblBathAmount.Text = propertyRow[3].ToString();
                 lblDescription.Text = propertyRow[4].ToString();
+                imgProperty.ImageUrl = propertyRow[5].ToString();
             }
             catch (Exception ex)
             {

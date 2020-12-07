@@ -16,6 +16,7 @@ namespace _3342FinalProject
         protected void Page_Load(object sender, EventArgs e)
         {
             DataTable propertiesTable = utility.GetProperties().Tables[0];
+            utility.PrintToDebug(propertiesTable.Rows.Count, "Count");
             for (int i = 0; i < propertiesTable.Rows.Count; i++)
             {
                 PropertyControl ctrl = (PropertyControl)LoadControl("PropertyControl.ascx");

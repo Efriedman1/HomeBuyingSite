@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Utilities;
 using System.Data;
 using System.Data.SqlClient;
+using PropertyLibrary;
 using System.Diagnostics;
 
 namespace PropertyLibrary
@@ -17,6 +18,59 @@ namespace PropertyLibrary
         {
             propertiesDB = new DBConnect();
         }
+
+        //DB Procedure Handling
+
+        //Users
+
+        public Boolean AddUser(String name, String password, int type)
+        {
+            SqlCommand userCommand = new SqlCommand();
+            userCommand.CommandType = CommandType.StoredProcedure;
+            userCommand.CommandText = "TP_AddUser";
+
+            SqlParameter nameParameter = new SqlParameter("@name", name);
+            nameParameter.Direction = ParameterDirection.Input;
+            nameParameter.SqlDbType = SqlDbType.VarChar;
+            nameParameter.Size = 50;
+            SqlParameter pwParameter = new SqlParameter("@password", password);
+            pwParameter.Direction = ParameterDirection.Input;
+            pwParameter.SqlDbType = SqlDbType.VarChar;
+            pwParameter.Size = 50;
+            SqlParameter typeParameter = new SqlParameter("@type", type);
+            typeParameter.Direction = ParameterDirection.Input;
+            typeParameter.SqlDbType = SqlDbType.Int;
+            typeParameter.Size = 8;
+            userCommand.Parameters.Add(nameParameter);
+            userCommand.Parameters.Add(pwParameter);
+            userCommand.Parameters.Add(typeParameter);
+            int ret = propertiesDB.DoUpdateUsingCmdObj(userCommand);
+            return ret > 0;
+        }
+
+        public Boolean CheckUserName(String name)
+        {
+            SqlCommand userCommand = new SqlCommand();
+            userCommand.CommandType = CommandType.StoredProcedure;
+            userCommand.CommandText = "TP_AddUser";
+
+            SqlParameter nameParameter = new SqlParameter("@name", name);
+            nameParameter.Direction = ParameterDirection.Input;
+            nameParameter.SqlDbType = SqlDbType.VarChar;
+            nameParameter.Size = 50;
+
+            userCommand.Parameters.Add(nameParameter);
+            DataSet userData = propertiesDB.GetDataSetUsingCmdObj(userCommand);
+            return true;
+        }
+
+        public int CheckLogin(String name, String password)
+        {
+            int userId = 0;
+            return userId;
+        }
+
+        //Properties
 
         public Boolean AddNewProperty(String name, String address, String description, int bedAmount, int bathAmount)
         {
@@ -46,10 +100,10 @@ namespace PropertyLibrary
             return propertyData;
         }
 
+        //Paymnents
 
 
-
-
+        //DEBUG
         public void PrintToDebug(double val, String tag)
         {
             System.Diagnostics.Debug.Print(tag + ": " + val.ToString() + "\n");

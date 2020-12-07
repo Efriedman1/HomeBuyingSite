@@ -21,12 +21,12 @@ namespace _3342FinalProject
 
         protected void btnSubmitLogin_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Homepage.aspx");
         }
 
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Signup.aspx");
         }
     }
 }
