@@ -15,17 +15,29 @@ namespace _3342FinalProject
         Utility utility = new Utility();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            DataTable propertiesTable = utility.GetProperties().Tables[0];
+            for (int i = 0; i < propertiesTable.Rows.Count; i++)
             {
-                DataTable propertiesTable = utility.GetProperties().Tables[0];             
-                for (int i = 0; i < propertiesTable.Rows.Count; i++)
-                {
-                    PropertyControl ctrl = (PropertyControl)LoadControl("PropertyControl.ascx");
-                    ctrl.PropertyID = Convert.ToInt32(propertiesTable.Rows[i][0]);
-                    ctrl.DataBind();
-                    Form.Controls.Add(ctrl);
-                }
+                PropertyControl ctrl = (PropertyControl)LoadControl("PropertyControl.ascx");
+                ctrl.PropertyID = Convert.ToInt32(propertiesTable.Rows[i][0]);
+                ctrl.DataBind();
+                Form.Controls.Add(ctrl);
+                Button viewButton = new Button();
+                viewButton.ID = "btnView" + i.ToString();
+                viewButton.Text = "View Property";
+                viewButton.CssClass = "btn btnView";
+                viewButton.Click += new EventHandler((s, a) => viewButton_Click(s, a, ctrl.PropertyID));
+                Form.Controls.Add(viewButton);
             }
         }
+
+        void viewButton_Click(object sender, EventArgs e, int id)
+        {
+            utility.PrintToDebug("click fired", "");
+            Session["PropertyID"] = id;
+            Response.Redirect("Property.aspx");
+        }
+
+
     }
 }

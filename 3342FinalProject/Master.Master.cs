@@ -13,5 +13,10 @@ namespace _3342FinalProject
         {
 
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

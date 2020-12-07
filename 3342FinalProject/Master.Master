@@ -5,7 +5,7 @@
 <html>
 <head runat="server">
     <title></title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="master.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -13,6 +13,23 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand text-light">
+                <img src="img/logo.png" alt="" style="width: 80%; height: 80%;" /></a>
+            <span>Home Rental Site</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <asp:Label ID="lblUserName" runat="server" CssClass="mr-3"></asp:Label>
+                    <asp:Button ID="btnLogout" runat="server" Text="Logout" class="btn redbtn" OnClick="btnLogout_Click" />
+                </div>
+            </div>
+        </nav>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
