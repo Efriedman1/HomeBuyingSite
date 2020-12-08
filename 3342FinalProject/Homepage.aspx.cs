@@ -34,11 +34,8 @@ namespace _3342FinalProject
 
         void viewButton_Click(object sender, EventArgs e, int id)
         {
-            utility.PrintToDebug("click fired", "");
             Session["PropertyID"] = id;
             Response.Redirect("Property.aspx");
         }
-
-
     }
 }

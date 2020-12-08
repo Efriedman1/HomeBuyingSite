@@ -18,15 +18,22 @@ namespace _3342FinalProject
 
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
-            if (rbType.SelectedIndex != -1)
+            String[] fields = { txtAddress.Text, txtBilling.Text, txtEmail.Text, txtPw1.Text, txtPw2.Text, txtSecurity1.Text, txtSecurity2.Text, txtSecurity3.Text, txtUsername.Text };
+
+            if (rbType.SelectedIndex != -1 && !utility.isNullOrEmpty(fields))
             {
-                utility.AddUser(txtUsername.Text, txtPw2.Text, rbType.SelectedIndex);
+                utility.PrintToDebug("TRUE", "validation");
+                //utility.AddUser(txtUsername.Text, txtPw2.Text, rbType.SelectedIndex);
+            }
+            else
+            {
+                utility.PrintToDebug("FALSE", "validation");
             }
         }
 
         protected void btnReturn_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
-        }
+        }        
     }
 }

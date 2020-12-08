@@ -19,6 +19,20 @@ namespace PropertyLibrary
             propertiesDB = new DBConnect();
         }
 
+        //Generic Methods
+
+        public Boolean isNullOrEmpty(String[] strArray)
+        {
+            foreach (String st in strArray)
+            {
+                if (st == null || st.Equals(""))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         //DB Procedure Handling
 
         //Users
