@@ -33,6 +33,7 @@
                         <asp:ListItem>Landlord</asp:ListItem>
                     </asp:RadioButtonList>
                 </p>
+                <asp:Label ID="lblError" runat="server" Text ="" Visible="false"></asp:Label>
                 <asp:Button ID="btnCreateAccount" runat="server" class="btn btn-md btn-primary btn-block" type="submit" Text="Create Account" OnClick="btnCreateAccount_Click" />
                 <asp:Button ID="btnReturn" runat="server" class="btn btn-link" Text="Return to Login Screen" OnClick="btnReturn_Click" />
                 <p class="mt-5 mb-3 text-muted">Copyright &copy; 2020</p>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Utilities;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using PropertyLibrary;
 using System.Diagnostics;
 
@@ -19,7 +20,7 @@ namespace PropertyLibrary
             propertiesDB = new DBConnect();
         }
 
-        //Generic Methods
+        //Validation Methods
 
         public Boolean isNullOrEmpty(String[] strArray)
         {
@@ -31,6 +32,20 @@ namespace PropertyLibrary
                 }
             }
             return false;
+        }
+
+        public Boolean isEmail(String str)
+        {
+            try
+            {
+                return Regex.IsMatch(str,
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
         }
 
         //DB Procedure Handling
@@ -62,11 +77,11 @@ namespace PropertyLibrary
             return ret > 0;
         }
 
-        public Boolean CheckUserName(String name)
+        public Boolean CheckUserNameTaken(String name)
         {
             SqlCommand userCommand = new SqlCommand();
             userCommand.CommandType = CommandType.StoredProcedure;
-            userCommand.CommandText = "TP_AddUser";
+            userCommand.CommandText = "TP_CheckUserName";
 
             SqlParameter nameParameter = new SqlParameter("@name", name);
             nameParameter.Direction = ParameterDirection.Input;
@@ -75,7 +90,16 @@ namespace PropertyLibrary
 
             userCommand.Parameters.Add(nameParameter);
             DataSet userData = propertiesDB.GetDataSetUsingCmdObj(userCommand);
-            return true;
+            if (userData.Tables[0].Rows.Count > 0)
+            {
+                PrintToDebug("TRUE", "UserName Taken");
+                return true;
+            }
+            else
+            {
+                PrintToDebug("FALSE", "UserName Taken");
+                return false;
+            }            
         }
 
         public int CheckLogin(String name, String password)
@@ -114,7 +138,20 @@ namespace PropertyLibrary
             return propertyData;
         }
 
-        //Paymnents
+        //Payments
+        public DataSet GetPaymentByID(int id)
+        {
+            SqlCommand paymentCommand = new SqlCommand();
+            paymentCommand.CommandType = CommandType.StoredProcedure;
+            paymentCommand.CommandText = "TP_GetPaymentByID";
+            SqlParameter idParameter = new SqlParameter("@id", id);
+            idParameter.Direction = ParameterDirection.Input;
+            idParameter.SqlDbType = SqlDbType.Int;
+            idParameter.Size = 8;
+            paymentCommand.Parameters.Add(idParameter);
+            DataSet paymentData = propertiesDB.GetDataSetUsingCmdObj(paymentCommand);
+            return paymentData;
+        }
 
 
         //DEBUG
