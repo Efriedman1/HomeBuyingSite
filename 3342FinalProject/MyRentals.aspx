@@ -2,4 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h3>Properties</h3>
+        <div id="propertiesDiv">No properties</div>
+    <h3>Payments</h3>
+        <div id="paymentsDiv">No current payments</div>
 </asp:Content>

@@ -16,7 +16,22 @@ namespace _3342FinalProject
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Login.aspx");
+        }
 
+        protected void btnMyRentals_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyRentals.aspx");
+        }
+
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Homepage.aspx");
+        }
+
+        protected void btnWallet_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Wallet.aspx");
         }
     }
 }
