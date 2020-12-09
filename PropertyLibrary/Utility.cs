@@ -153,6 +153,19 @@ namespace PropertyLibrary
             return paymentData;
         }
 
+        public DataSet GetPaymentsByUserID(int id)
+        {
+            SqlCommand paymentCommand = new SqlCommand();
+            paymentCommand.CommandType = CommandType.StoredProcedure;
+            paymentCommand.CommandText = "TP_GetPaymentsByRenterID";
+            SqlParameter idParameter = new SqlParameter("@id", id);
+            idParameter.Direction = ParameterDirection.Input;
+            idParameter.SqlDbType = SqlDbType.Int;
+            idParameter.Size = 8;
+            paymentCommand.Parameters.Add(idParameter);
+            DataSet paymentData = propertiesDB.GetDataSetUsingCmdObj(paymentCommand);
+            return paymentData;
+        }
 
         //DEBUG
         public void PrintToDebug(double val, String tag)

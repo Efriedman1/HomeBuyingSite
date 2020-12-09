@@ -26,12 +26,12 @@ namespace _3342FinalProject
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Homepage.aspx");
         }
 
         protected void btnWallet_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Wallet.aspx");
         }
     }
 }

@@ -24,7 +24,7 @@ namespace _3342FinalProject
         public int PaymentID
         {
             get { return paymentID; }
-            set { PaymentID = value; }
+            set { paymentID = value; }
         }
 
         [Category("Misc")]
@@ -41,6 +41,7 @@ namespace _3342FinalProject
             set { lblRent.Text = value; }
         }
 
+        [Category("Misc")]
         public String DueDate
         {
             get { return lblDue.Text; }
@@ -51,11 +52,11 @@ namespace _3342FinalProject
         {
             //Address, Rent, Beds, Baths, Description, ImageUrl
             utility = new Utility();
-            try { 
-            DataRow propertyRow = utility.GetPaymentByID(paymentID).Tables[0].Rows[0];
-            lblAddress.Text = propertyRow[0].ToString();
-            lblRent.Text = "$" + propertyRow[1].ToString() + "/mo.";
-            lblDue.Text = "Due: " + propertyRow[2].ToString();
+            try
+            {
+                DataRow propertyRow = utility.GetPaymentByID(paymentID).Tables[0].Rows[0];                
+                lblRent.Text = "$" + propertyRow[3].ToString();
+                lblDue.Text = "Due by: " + propertyRow[1].ToString();
             }
             catch (Exception e)
             {

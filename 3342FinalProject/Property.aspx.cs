@@ -34,6 +34,7 @@ namespace _3342FinalProject
 
         protected void btnRent_Click(object sender, EventArgs e)
         {
+            //Add properties to user list
 
         }
     }
