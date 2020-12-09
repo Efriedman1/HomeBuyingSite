@@ -33,6 +33,7 @@ namespace PropertiesAPI.Controllers
             for(int i = 0; i < count; i++)
             {
                 Properties prop = new Properties();
+                prop.PropertyID = Convert.ToInt32(objDB.GetField("PropertyID", i));
                 prop.Address = objDB.GetField("Address", i).ToString();
                 prop.MonthlyRent = Convert.ToDouble(objDB.GetField("Rent", i));
                 prop.Beds = Convert.ToInt32(objDB.GetField("Beds", i));

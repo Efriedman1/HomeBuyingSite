@@ -8,6 +8,7 @@ namespace PropertyLibrary
 {
     public class Properties
     {
+        public int PropertyID { get; set; }
         public string Address { get; set; }
         public string Image { get; set; }
         public string Owner { get; set; }

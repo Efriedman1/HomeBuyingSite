@@ -11,7 +11,4 @@
     <asp:Label ID="lblBathAmount" runat="server"></asp:Label>
     <asp:Label ID="lblDescription" runat="server"></asp:Label>
     <asp:Button ID="btnRent" runat="server" Text="Rent Property" OnClick="btnRent_Click" CssClass="btn btn-primary"/>
-
-       <asp:gridview ID="gvProperties" runat="server">
-       </asp:gridview>
 </asp:Content>
