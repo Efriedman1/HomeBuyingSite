@@ -13,5 +13,38 @@ namespace _3342FinalProject
         {
             //Load and display all properties for Landlord
         }
+
+        public void displayAddProp(bool tf)
+        {
+            lblName.Visible = tf;
+            tbName.Visible = tf;
+            lblAddress.Visible = tf;
+            tbAddress.Visible = tf;
+            lblBeds.Visible = tf;
+            tbBeds.Visible = tf;
+            lblBaths.Visible = tf;
+            tbBaths.Visible = tf;
+            lblRent.Visible = tf;
+            tbRent.Visible = tf;
+            lblDescription.Visible = tf;
+            tbDescription.Visible = tf;
+            btnBack.Visible = tf;
+            btnSave.Visible = tf;
+        }
+
+            protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            displayAddProp(true);
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            displayAddProp(false);
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

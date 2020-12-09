@@ -57,9 +57,9 @@ namespace PropertiesAPI.Controllers
 
         [HttpPost] //route: api/properties (default route)
         [HttpPost("SaveProperty")] //route: api/properties/SaveProperty
-        public string Post(string propName, string address, string owner)
+        public string Post(string address, string image, string owner, int beds, int baths, double rent, string description)
         {
-            return "Web API - HTTP Post execute. Received: Property Name = " + propName + " Address = " + address + " Owner = " + owner;
+            
         }
     }
 
