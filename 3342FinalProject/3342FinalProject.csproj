@@ -78,6 +78,7 @@
     <Content Include="master.css" />
     <Content Include="MyProperties.aspx" />
     <Content Include="MyRentals.aspx" />
+    <Content Include="PaymentControl.ascx" />
     <Content Include="Property.aspx" />
     <Content Include="PropertyControl.ascx" />
     <Content Include="Signup.aspx" />
@@ -126,6 +127,13 @@
     </Compile>
     <Compile Include="MyRentals.aspx.designer.cs">
       <DependentUpon>MyRentals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentControl.ascx.cs">
+      <DependentUpon>PaymentControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentControl.ascx.designer.cs">
+      <DependentUpon>PaymentControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.aspx.cs">

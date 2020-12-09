@@ -11,7 +11,7 @@ namespace _3342FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Load and display all properties for Landlord
         }
     }
 }

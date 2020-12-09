@@ -13,14 +13,17 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Home Rentals Website</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarExpand" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <asp:Button ID="btnHome" runat="server" Text="Home" CssClass="btn text-white" OnClick="btnHome_Click" />
+            <asp:Button ID="btnMyRentals" runat="server" Text="My Rentals" CssClass="btn text-white" OnClick="btnMyRentals_Click" />
+            <asp:Button ID="btnWallet" runat="server" Text="My Wallet" CssClass="btn text-white" OnClick="btnWallet_Click" />
             <div class="form-inline my-2 my-lg-0">
                 <asp:Label ID="Label1" runat="server" CssClass="mr-3"></asp:Label>
-                <asp:Button ID="Button1" runat="server" Text="Logout" class="btn redbtn" OnClick="btnLogout_Click" />
+                <asp:Button ID="btnLogout" runat="server" Text="Logout" class="btn redbtn" OnClick="btnLogout_Click" />
             </div>
         </nav>
         <div>
