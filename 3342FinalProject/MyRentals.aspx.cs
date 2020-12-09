@@ -37,7 +37,8 @@ namespace _3342FinalProject
 
         void viewButton_Click(object sender, EventArgs e, int id)
         {
-            utility.PrintToDebug(id, "Payment Click ID");            
+            utility.PrintToDebug(id, "Payment Click ID");
+            utility.SetPaymentPaid(id);
         }
     }
 }

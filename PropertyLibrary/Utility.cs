@@ -120,8 +120,31 @@ namespace PropertyLibrary
 
         public int CheckLogin(String name, String password)
         {
-            int userId = 0;
-            return userId;
+            SqlCommand userCommand = new SqlCommand();
+            userCommand.CommandType = CommandType.StoredProcedure;
+            userCommand.CommandText = "TP_CheckLogin";
+
+            SqlParameter nameParameter = new SqlParameter("@name", name);
+            nameParameter.Direction = ParameterDirection.Input;
+            nameParameter.SqlDbType = SqlDbType.VarChar;
+            nameParameter.Size = 50;
+
+            SqlParameter pwParameter = new SqlParameter("@password", password);
+            pwParameter.Direction = ParameterDirection.Input;
+            pwParameter.SqlDbType = SqlDbType.VarChar;
+            pwParameter.Size = 50;
+
+            userCommand.Parameters.Add(nameParameter);
+            userCommand.Parameters.Add(pwParameter);
+            DataSet userData = propertiesDB.GetDataSetUsingCmdObj(userCommand);
+            try
+            {
+                return Convert.ToInt32(userData.Tables[0].Rows[0][0]);
+            }
+            catch
+            {
+                return -1;
+            }
         }
 
         public Boolean AddFunds(double amount, int id)

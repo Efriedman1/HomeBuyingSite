@@ -17,6 +17,7 @@ namespace _3342FinalProject
             utility = new Utility();
             DataSet userData = utility.GetUserByID(1);
             lblFunds.Text = "Funds: $" + userData.Tables[0].Rows[0][4].ToString();
+            lblName.Text = userData.Tables[0].Rows[0][1].ToString();
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace _3342FinalProject
             }
             catch
             {
-
+                //Error adding funds
             }
         }
     }

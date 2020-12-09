@@ -12,6 +12,7 @@
                 <asp:TextBox ID="txtUsername" runat="server" class="form-control" placeholder="Username" autofocus=""></asp:TextBox>
                 <label for="txtPw" class="sr-only">Password</label>
                 <asp:TextBox ID="txtPw" runat="server" class="form-control" placeholder="Password" autofocus=""></asp:TextBox>
+                <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible ="false" Text=""></asp:Label>
                 <p>
                     <asp:RadioButtonList ID="selectAccountType" runat="server" CssClass="text-left">
                         <asp:ListItem>Renter</asp:ListItem>
