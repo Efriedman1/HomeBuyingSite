@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PropertyLibrary;
 
 namespace _3342FinalProject
 {
@@ -16,6 +17,8 @@ namespace _3342FinalProject
 
         public void displayAddProp(bool tf)
         {
+            lblImage.Visible = tf;
+            ddImage.Visible = tf;
             lblName.Visible = tf;
             tbName.Visible = tf;
             lblAddress.Visible = tf;
@@ -44,7 +47,18 @@ namespace _3342FinalProject
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            Properties prop = new Properties
+            {
+                Image = ddImage.Text,
+                Address = tbAddress.Text,
+                Owner = Session["Name"].ToString(),
+                Beds = Convert.ToInt32(tbBeds.Text),
+                Bathrooms = Convert.ToInt32(tbBaths.Text),
+                MonthlyRent = Convert.ToInt32(tbRent.Text),
+                Description = tbDescription.Text
+                
+                
+            };
         }
     }
 }
