@@ -42,6 +42,9 @@ namespace PropertiesAPI.Controllers
 
                 propList.Add(prop);
             }
+
+            
+
             return propList;
         }  
       
