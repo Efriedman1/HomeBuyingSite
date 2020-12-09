@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace PropertiesAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class ValuesController : ControllerBase
+
+    public class ValuesController : Controller
     {
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2", "value3"  };
         }
 
         // GET api/values/5
