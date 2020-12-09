@@ -37,8 +37,7 @@ namespace _3342FinalProject
 
         void viewButton_Click(object sender, EventArgs e, int id)
         {
-            Session["PropertyID"] = id;
-            Response.Redirect("Property.aspx");
+            utility.PrintToDebug(id, "Payment Click ID");            
         }
     }
 }

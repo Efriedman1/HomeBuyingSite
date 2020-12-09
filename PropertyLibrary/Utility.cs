@@ -102,10 +102,39 @@ namespace PropertyLibrary
             }            
         }
 
+        public DataSet GetUserByID(int id)
+        {
+            SqlCommand userCommand = new SqlCommand();
+            userCommand.CommandType = CommandType.StoredProcedure;
+            userCommand.CommandText = "TP_GetUserByID";
+
+            SqlParameter idParameter = new SqlParameter("@id", id);
+            idParameter.Direction = ParameterDirection.Input;
+            idParameter.SqlDbType = SqlDbType.Int;
+            idParameter.Size = 8;
+
+            userCommand.Parameters.Add(idParameter);
+            DataSet userData = propertiesDB.GetDataSetUsingCmdObj(userCommand);
+            return userData;
+        }
+
         public int CheckLogin(String name, String password)
         {
             int userId = 0;
             return userId;
+        }
+
+        public Boolean AddFunds(double amount, int id)
+        {
+            SqlCommand paymentCommand = new SqlCommand();
+            paymentCommand.CommandType = CommandType.StoredProcedure;
+            paymentCommand.CommandText = "TP_AddFunds";
+            SqlParameter idParameter = new SqlParameter("@amount", amount);
+            idParameter.SqlDbType = SqlDbType.Money;
+            idParameter.Size = 8;
+            paymentCommand.Parameters.Add(idParameter);
+            int ret = propertiesDB.DoUpdateUsingCmdObj(paymentCommand);
+            return ret > 0;
         }
 
         //Properties
@@ -167,6 +196,19 @@ namespace PropertyLibrary
             return paymentData;
         }
 
+        public Boolean SetPaymentPaid(int id)
+        {
+            SqlCommand paymentCommand = new SqlCommand();
+            paymentCommand.CommandType = CommandType.StoredProcedure;
+            paymentCommand.CommandText = "TP_SetPaymentPaid";
+            SqlParameter idParameter = new SqlParameter("@id", id);
+            idParameter.SqlDbType = SqlDbType.Int;
+            idParameter.Size = 8;
+            paymentCommand.Parameters.Add(idParameter);
+            int ret = propertiesDB.DoUpdateUsingCmdObj(paymentCommand);
+            return ret > 0;
+        }
+
         //DEBUG
         public void PrintToDebug(double val, String tag)
         {
@@ -179,6 +221,11 @@ namespace PropertyLibrary
         public void PrintToDebug(String val, String tag)
         {
             System.Diagnostics.Debug.Print(tag + ": " + val + "\n");
+        }
+
+        public void PrintToDebug(Boolean val, String tag)
+        {
+            System.Diagnostics.Debug.Print(tag + ": " + val.ToString() + "\n");
         }
     }
 }
