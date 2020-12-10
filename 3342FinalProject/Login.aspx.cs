@@ -19,12 +19,12 @@ namespace _3342FinalProject
             {
                 Session["UserType"] = -1;
             }
-            if (!IsPostBack && Request.Cookies["HomeRentalCookie"] != null)
+            if (!IsPostBack && Request.Cookies["HomeRentalCookie"] != null && Request.Cookies["HomeRentalCookie"].Values["Name"] != "")
             {
                 HttpCookie cookie = Request.Cookies["HomeRentalCookie"];
-
                 txtUsername.Text = cookie.Values["Name"].ToString();
                 txtPw.Text = cookie.Values["Password"].ToString();
+                btnDeleteCookie.Visible = true;
             }
         }
 
@@ -69,9 +69,18 @@ namespace _3342FinalProject
         {
             HttpCookie myCookie = new HttpCookie("HomeRentalCookie");
             myCookie.Values["Name"] = txtUsername.Text;
-            myCookie.Values["Password"] = txtPw.Text;
+            myCookie.Values["Password"] = txtPw.Text;            
             myCookie.Expires = new DateTime(2025, 1, 1);
             Response.Cookies.Add(myCookie);            
+        }
+
+        protected void btnDeleteCookie_Click(object sender, EventArgs e)
+        {
+            HttpCookie myCookie = Request.Cookies["HomeRentalCookie"];
+            myCookie.Values["Name"] = "";
+            myCookie.Values["Password"] = "";
+            myCookie.Expires = DateTime.Today.AddDays(-1);
+            btnDeleteCookie.Visible = false;
         }
     }
 }
