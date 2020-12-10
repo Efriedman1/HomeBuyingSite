@@ -7,10 +7,12 @@ using System.Web.UI.WebControls;
 using PropertyLibrary;
 using System.Data;
 
+
 namespace _3342FinalProject
 {
     public partial class Property : System.Web.UI.Page
     {
+
         Utility utility;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,7 +31,7 @@ namespace _3342FinalProject
             {
                 utility.PrintToDebug(ex.ToString(), "Error loading property");
             }
-            
+
         }
 
         protected void btnRent_Click(object sender, EventArgs e)
@@ -37,5 +39,6 @@ namespace _3342FinalProject
             //Add properties to user list
 
         }
+
     }
 }
