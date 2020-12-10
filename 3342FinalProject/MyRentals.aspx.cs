@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PropertyLibrary;
 using System.Data;
+using System.Drawing;
 
 namespace _3342FinalProject
 {
@@ -23,45 +24,45 @@ namespace _3342FinalProject
             DataTable paymentTable = paymentData.Tables[0];
             utility.PrintToDebug(paymentTable.Rows.Count, "Count");
 
-            if (!IsPostBack)
+            for (int i = 0; i < paymentTable.Rows.Count; i++)
             {
-                for (int i = 0; i < paymentTable.Rows.Count; i++)
-                {
-                    utility.PrintToDebug(paymentTable.Rows[i][0].ToString(), "Payment ID " + i);
-                    PaymentControl ctrl = (PaymentControl)LoadControl("PaymentControl.ascx");
-                    ctrl.PaymentID = Convert.ToInt32(paymentTable.Rows[i][0]);
-                    utility.PrintToDebug(ctrl.PaymentID, "Payment ID");
-                    ctrl.DataBind();
-                    Form.Controls.Add(ctrl);
-                    Button viewButton = new Button();
-                    viewButton.ID = "btnView" + i.ToString();
-                    viewButton.Text = "Make Payment";
-                    viewButton.CssClass = "btn btnView";
-                    viewButton.Click += new EventHandler((s, a) => viewButton_Click(s, a, ctrl.PaymentID));
-                    Form.Controls.Add(viewButton);
-                    TextBox txtPartial = new TextBox();
-                    txtPartial.CssClass = "form-control-sm";
-                    txtPartial.ID = "txtPartial" + i;
-                    Form.Controls.Add(txtPartial);
-                    Button partialButton = new Button();
-                    partialButton.ID = "btnView" + i.ToString();
-                    partialButton.Text = "Partial Payment";
-                    partialButton.CssClass = "btn btnView";
-                    partialButton.Click += new EventHandler((s, a) => partialButton_Click(s, a, ctrl.PaymentID));
-                    Form.Controls.Add(partialButton);
-                }
+                System.Web.UI.HtmlControls.HtmlGenericControl newDiv =
+                    new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+                utility.PrintToDebug(paymentTable.Rows[i][0].ToString(), "Payment ID " + i);
+
+                PaymentControl ctrl = (PaymentControl)LoadControl("PaymentControl.ascx");
+                ctrl.PaymentID = Convert.ToInt32(paymentTable.Rows[i][0]);
+                utility.PrintToDebug(ctrl.PaymentID, "Payment ID");
+                ctrl.DataBind();
+                Form.Controls.Add(ctrl);
+                Button viewButton = new Button();
+                viewButton.ID = "btnView" + i.ToString();
+                viewButton.Text = "Quick Pay";
+                viewButton.CssClass = "btn btn-primary m-2";
+                viewButton.Click += new EventHandler((s, a) => viewButton_Click(s, a, ctrl.PaymentID));
+                newDiv.Controls.Add(viewButton);
+
+                Button partialButton = new Button();
+                partialButton.ID = "btnPartial" + i.ToString();
+                partialButton.Text = "Partial Payment";
+                partialButton.CssClass = "btn btn-primary m-2";
+                partialButton.Click += new EventHandler((s, a) => partialButton_Click(s, a, ctrl.PaymentID));
+                newDiv.Controls.Add(partialButton);                
             }
         }
 
         void viewButton_Click(object sender, EventArgs e, int id)
         {
+            //Make payment
             utility.PrintToDebug(id, "Payment Click ID");
             utility.SetPaymentPaid(id);
         }
 
         void partialButton_Click(object sender, EventArgs e, int id)
         {
-
+            //Make partial payment
+            Session["PaymentID"] = id;
+            Response.Redirect("Payment.aspx");
         }
     }
 }
