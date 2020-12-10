@@ -11,7 +11,24 @@ namespace _3342FinalProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                if ((int)Session["userType"] == 0)
+                {
+                    btnWallet.Visible = true;
+                    btnHome.Visible = true;
+                    btnMyRentals.Visible = true;
+                }
+                else
+                {
+                    btnWallet.Visible = false;
+                    btnMyRentals.Visible = false;
+                }
+            }
+            catch
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

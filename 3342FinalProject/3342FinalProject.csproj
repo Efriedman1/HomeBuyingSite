@@ -74,13 +74,13 @@
     <Content Include="img\houses\03.jpg" />
     <Content Include="img\houses\04.jpg" />
     <Content Include="Login.aspx" />
-    <Content Include="LoginControl.ascx" />
     <Content Include="master.css" />
     <Content Include="MyProperties.aspx" />
     <Content Include="MyRentals.aspx" />
     <Content Include="PaymentControl.ascx" />
     <Content Include="Property.aspx" />
     <Content Include="PropertyControl.ascx" />
+    <Content Include="RetrievePassword.aspx" />
     <Content Include="Signup.aspx" />
     <Content Include="Wallet.aspx" />
     <Content Include="Web.config" />
@@ -99,13 +99,6 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LoginControl.ascx.cs">
-      <DependentUpon>LoginControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LoginControl.ascx.designer.cs">
-      <DependentUpon>LoginControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
@@ -149,6 +142,13 @@
     </Compile>
     <Compile Include="PropertyControl.ascx.designer.cs">
       <DependentUpon>PropertyControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="RetrievePassword.aspx.cs">
+      <DependentUpon>RetrievePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RetrievePassword.aspx.designer.cs">
+      <DependentUpon>RetrievePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>

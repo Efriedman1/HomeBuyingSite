@@ -32,11 +32,56 @@ namespace _3342FinalProject
                     lblError.Text = "This Username is taken, try another";
                     return;
                 }
-                //utility.AddUser(txtUsername.Text, txtPw2.Text, rbType.SelectedIndex);
+                if (txtUsername.Text.Length >= 50)
+                {
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Text = "Username must be less than 50 characters long";
+                    return;
+                }
+                if (!String.Equals(txtPw1.Text, txtPw2.Text))
+                {
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Text = "Passwords do not match";
+                    return;
+                }
+                if(txtPw1.Text.Length < 6)
+                {
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Text = "Password must be at least 6 characters long";
+                    return;
+                }
+                if (txtPw1.Text.Length >= 50)
+                {
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Text = "Password must be less than 50 characters long";
+                    return;
+                }
+                if (txtEmail.Text.Length >= 50)
+                {
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Text = "Email must be less than 50 characters long";
+                    return;
+                }
+                if (txtSecurity1.Text.Length >= 50 || txtSecurity2.Text.Length >= 50 || txtSecurity3.Text.Length >= 50)
+                {
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Text = "Security question responses must be less than 50 characters long";
+                    return;
+                }
+                StringBuilder sb
+                utility.AddUser(txtUsername.Text, txtPw2.Text, rbType.SelectedIndex);
             }
             else
             {
-                utility.PrintToDebug("FALSE", "validation");
+                lblError.Visible = true;
+                lblError.ForeColor = Color.Red;
+                lblError.Text = "Please fill out all fields";
             }            
         }
 

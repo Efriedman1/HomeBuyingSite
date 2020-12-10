@@ -75,7 +75,7 @@ namespace PropertyLibrary
             userCommand.Parameters.Add(typeParameter);
             int ret = propertiesDB.DoUpdateUsingCmdObj(userCommand);
             return ret > 0;
-        }
+        }        
 
         public Boolean CheckUserNameTaken(String name)
         {
@@ -160,7 +160,7 @@ namespace PropertyLibrary
 
             SqlParameter amountParameter = new SqlParameter("@amount", amount);
             amountParameter.Direction = ParameterDirection.Input;
-            amountParameter.SqlDbType = SqlDbType.Money;
+            amountParameter.SqlDbType = SqlDbType.Decimal;
             amountParameter.Size = 8;
             paymentCommand.Parameters.Add(amountParameter);
             paymentCommand.Parameters.Add(idParameter);

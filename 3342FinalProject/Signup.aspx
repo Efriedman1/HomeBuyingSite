@@ -16,9 +16,9 @@
                 <asp:TextBox ID="txtPw1" runat="server" class="form-control" placeholder="Password" autofocus=""></asp:TextBox>
                 <label for="txtPw2" class="">Verify Password</label>
                 <asp:TextBox ID="txtPw2" runat="server" class="form-control" placeholder="Verify Password" autofocus=""></asp:TextBox>
-                <label for="txtAddress" class="">What is the name of your first pet?</label>
+                <label for="txtAddress" class="">Address</label>
                 <asp:TextBox ID="txtAddress" runat="server" class="form-control" placeholder="Verify Password" autofocus=""></asp:TextBox>
-                <label for="txtBilling" class="">What is the name of your first pet?</label>
+                <label for="txtBilling" class="">Billing Address</label>
                 <asp:TextBox ID="txtBilling" runat="server" class="form-control" placeholder="Verify Password" autofocus=""></asp:TextBox>
                 <label for="txtSecurity1" class="">What is the name of your first pet?</label>
                 <asp:TextBox ID="txtSecurity1" runat="server" class="form-control" placeholder="Verify Password" autofocus=""></asp:TextBox>

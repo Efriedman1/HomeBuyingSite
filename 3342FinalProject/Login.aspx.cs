@@ -15,6 +15,10 @@ namespace _3342FinalProject
         protected void Page_Load(object sender, EventArgs e)
         {
             utility = new Utility();
+            if (!IsPostBack)
+            {
+                Session["UserType"] = -1;
+            }
         }
 
         protected void btnView_Click(object sender, EventArgs e)
@@ -28,6 +32,7 @@ namespace _3342FinalProject
             if (userId > 0)
             {
                 Session["UserID"] = userId;
+                Session["UserType"] = 0;
                 utility.PrintToDebug(userId, "Login ID");
                 Response.Redirect("Homepage.aspx");
             } 
@@ -45,7 +50,7 @@ namespace _3342FinalProject
 
         protected void btnLostPassword_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("RetrievePassword.aspx");
         }
     }
 }
