@@ -101,19 +101,17 @@ namespace _3342FinalProject
                 if (data == "true")
                 {
                     Response.Write("<script>alert('The property was successfully saved to the database..')</script>");
-
                 }
                 else
                 {
-                    Response.Write("<script>alert('A problem occurred while adding the customer to the database. The data wasn't recorded.')</script>");
+                    Response.Write("<script>alert('A problem occurred while adding the property to the database. The data wasn't recorded.')</script>");
                 }
             }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Error: " + ex.Message + "')</script>");
-
             }
-
         }
     }
 }
+

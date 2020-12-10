@@ -7,7 +7,7 @@ namespace PropertiesAPI.Models
 {
     public class Properties
     {
-        //public int PropertyID { get; set; }
+        public int PropertyID { get; set; }
         public int OwnerID { get; set; }
         public string Address { get; set; }
         public string Image { get; set; }

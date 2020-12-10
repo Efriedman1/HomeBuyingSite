@@ -30,10 +30,10 @@ namespace PropertiesAPI.Controllers
 
             int count = propertyData.Tables[0].Rows.Count;
 
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 Properties prop = new Properties();
-                //prop.PropertyID = Convert.ToInt32(objDB.GetField("PropertyID", i));
+                prop.PropertyID = Convert.ToInt32(objDB.GetField("PropertyID", i));
                 prop.Address = objDB.GetField("Address", i).ToString();
                 prop.MonthlyRent = Convert.ToDecimal(objDB.GetField("Rent", i));
                 prop.Beds = Convert.ToInt32(objDB.GetField("Beds", i));
@@ -44,21 +44,41 @@ namespace PropertiesAPI.Controllers
                 propList.Add(prop);
             }
 
-            
+
 
             return propList;
-        }  
-      
-        [HttpGet("GetPropByID")] //route: api/properties/GetPropByID
-        public String getPropertyByID(int propId)
+        }
+
+        [HttpGet("GetPropByID/{propId}")] //route: api/properties/GetPropByID
+        public Properties getPropertyByID(int propId)
         {
-            return "Web API - HTTP Get with propertyID = " + propId;
+            Properties prop = null;
+            DBConnect objDB = new DBConnect();
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetPropertyByID";
+            objCommand.Parameters.AddWithValue("@propertyID", propId);
+
+            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            if (myDS.Tables[0].Rows.Count > 0)
+            {
+                prop = new Properties();
+                prop.Address = objDB.GetField("Address", 0).ToString();
+                prop.MonthlyRent = Convert.ToDecimal(objDB.GetField("Rent", 0));
+                prop.Beds = Convert.ToInt32(objDB.GetField("Beds", 0));
+                prop.Bathrooms = Convert.ToInt32(objDB.GetField("Baths", 0));
+                prop.Description = objDB.GetField("Description", 0).ToString();
+                prop.Image = objDB.GetField("ImageUrl", 0).ToString();
+            }
+            return prop;
         }
 
         // This method accepts a Property object and creates a new record based on the values
         // set for the object passed into the method.
-        [HttpPost()]                
-        [HttpPost("AddProperty")]   
+        [HttpPost()]
+        [HttpPost("AddProperty")]
         public Boolean AddProperty([FromBody]Properties prop)
         {
             if (prop != null)
@@ -90,13 +110,41 @@ namespace PropertiesAPI.Controllers
                 return false;
             }
         }
-    }
 
+        [HttpPut()]
+        [HttpPut("EditProperty")]
+        public Boolean EditProperty([FromBody]Properties prop)
+        {
+            if (prop != null)
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_EditProperty";
+
+                objCommand.Parameters.AddWithValue("@PropertyID", 10);
+                objCommand.Parameters.AddWithValue("@OwnerID", prop.OwnerID);
+                objCommand.Parameters.AddWithValue("@OwnerName", prop.Owner);
+                objCommand.Parameters.AddWithValue("@Address", prop.Address);
+                objCommand.Parameters.AddWithValue("@Beds", prop.Beds);
+                objCommand.Parameters.AddWithValue("@Baths", prop.Bathrooms);
+                objCommand.Parameters.AddWithValue("@Rent", prop.MonthlyRent);
+                objCommand.Parameters.AddWithValue("@Description", prop.Description);
+                objCommand.Parameters.AddWithValue("@ImageUrl", prop.Image);
+
+                int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (retVal > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }
 
-
-//SqlParameter rentParameter = new SqlParameter("@Rent", prop.MonthlyRent);
-//rentParameter.SqlDbType = SqlDbType.Money;
-//rentParameter.Direction = ParameterDirection.Input;
-//rentParameter.Size = 8;
-//objCommand.Parameters.Add(rentParameter);
