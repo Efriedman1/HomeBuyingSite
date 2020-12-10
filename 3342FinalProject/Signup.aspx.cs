@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PropertyLibrary;
 using System.Drawing;
+using System.Text;
+
 
 namespace _3342FinalProject
 {
@@ -19,6 +21,7 @@ namespace _3342FinalProject
 
         protected void btnCreateAccount_Click(object sender, EventArgs e)
         {
+            Users user = new Users();
             String[] fields = { txtAddress.Text, txtBilling.Text, txtEmail.Text, txtPw1.Text, txtPw2.Text, txtSecurity1.Text, txtSecurity2.Text, txtSecurity3.Text, txtUsername.Text };
             //check all fields for blanks
             if (rbType.SelectedIndex != -1 && !utility.isNullOrEmpty(fields))
@@ -74,8 +77,16 @@ namespace _3342FinalProject
                     lblError.Text = "Security question responses must be less than 50 characters long";
                     return;
                 }
-                StringBuilder sb
-                utility.AddUser(txtUsername.Text, txtPw2.Text, rbType.SelectedIndex);
+
+                user.SecurityAnswers = txtSecurity1.Text + "," + txtSecurity2.Text + "," + txtSecurity3.Text;
+                user.UserType = rbType.SelectedIndex;
+                user.WalletAmount = 0;
+                user.Password = txtPw1.Text;
+                user.Address = txtAddress.Text;
+                user.BillingAddress = txtBilling.Text;
+                user.Email = txtEmail.Text;
+
+                utility.AddUser(user.UserName, user.Password, user.SecurityAnswers, user.WalletAmount, user.UserType, user.Email, user.Address, user.BillingAddress);
             }
             else
             {

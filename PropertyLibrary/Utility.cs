@@ -52,7 +52,7 @@ namespace PropertyLibrary
 
         //Users
 
-        public Boolean AddUser(String name, String password, int type)
+        public Boolean AddUser(String name, String password, String security, decimal funds, int type, String email, String address, String billing)
         {
             SqlCommand userCommand = new SqlCommand();
             userCommand.CommandType = CommandType.StoredProcedure;
@@ -66,10 +66,31 @@ namespace PropertyLibrary
             pwParameter.Direction = ParameterDirection.Input;
             pwParameter.SqlDbType = SqlDbType.VarChar;
             pwParameter.Size = 50;
+            SqlParameter securityParameter = new SqlParameter("@security", security);
+            securityParameter.Direction = ParameterDirection.Input;
+            securityParameter.SqlDbType = SqlDbType.VarChar;
+            securityParameter.Size = 255;
+            SqlParameter fundsParameter = new SqlParameter("@funds", funds);
+            fundsParameter.Direction = ParameterDirection.Input;
+            fundsParameter.SqlDbType = SqlDbType.Decimal;
+            fundsParameter.Size = 8;
             SqlParameter typeParameter = new SqlParameter("@type", type);
             typeParameter.Direction = ParameterDirection.Input;
             typeParameter.SqlDbType = SqlDbType.Int;
             typeParameter.Size = 8;
+            SqlParameter emailParameter = new SqlParameter("@email", email);
+            emailParameter.Direction = ParameterDirection.Input;
+            emailParameter.SqlDbType = SqlDbType.VarChar;
+            emailParameter.Size = 50;
+            SqlParameter addressParameter = new SqlParameter("@address", address);
+            addressParameter.Direction = ParameterDirection.Input;
+            addressParameter.SqlDbType = SqlDbType.VarChar;
+            addressParameter.Size = 255;
+            SqlParameter idParameter = new SqlParameter("@billing", billing);
+            idParameter.Direction = ParameterDirection.Input;
+            idParameter.SqlDbType = SqlDbType.VarChar;
+            idParameter.Size = 255;
+
             userCommand.Parameters.Add(nameParameter);
             userCommand.Parameters.Add(pwParameter);
             userCommand.Parameters.Add(typeParameter);
