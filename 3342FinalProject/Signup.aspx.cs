@@ -78,6 +78,7 @@ namespace _3342FinalProject
                     return;
                 }
 
+                user.UserName = txtUsername.Text;
                 user.SecurityAnswers = txtSecurity1.Text + "," + txtSecurity2.Text + "," + txtSecurity3.Text;
                 user.UserType = rbType.SelectedIndex;
                 user.WalletAmount = 0;
@@ -86,7 +87,27 @@ namespace _3342FinalProject
                 user.BillingAddress = txtBilling.Text;
                 user.Email = txtEmail.Text;
 
-                utility.AddUser(user.UserName, user.Password, user.SecurityAnswers, user.WalletAmount, user.UserType, user.Email, user.Address, user.BillingAddress);
+                if (utility.AddUser(user.UserName, user.Password, user.SecurityAnswers, user.WalletAmount, user.UserType, user.Email, user.Address, user.BillingAddress))
+                {
+                    txtUsername.Visible = false;
+                    txtAddress.Visible = false;
+                    txtBilling.Visible = false;
+                    txtEmail.Visible = false;
+                    txtPw1.Visible = false;
+                    txtPw2.Visible = false;
+                    txtSecurity1.Visible = false;
+                    txtSecurity2.Visible = false;
+                    txtSecurity3.Visible = false;
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Green;
+                    lblError.Text = "Account created";
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Text = "Error creating user, please try again";
+                }
             }
             else
             {
