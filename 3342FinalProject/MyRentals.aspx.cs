@@ -40,14 +40,14 @@ namespace _3342FinalProject
                 viewButton.Text = "Quick Pay";
                 viewButton.CssClass = "btn btn-primary m-2";
                 viewButton.Click += new EventHandler((s, a) => viewButton_Click(s, a, ctrl.PaymentID));
-                newDiv.Controls.Add(viewButton);
+                Form.Controls.Add(viewButton);
 
                 Button partialButton = new Button();
                 partialButton.ID = "btnPartial" + i.ToString();
                 partialButton.Text = "Partial Payment";
                 partialButton.CssClass = "btn btn-primary m-2";
                 partialButton.Click += new EventHandler((s, a) => partialButton_Click(s, a, ctrl.PaymentID));
-                newDiv.Controls.Add(partialButton);                
+                Form.Controls.Add(partialButton);                
             }
         }
 

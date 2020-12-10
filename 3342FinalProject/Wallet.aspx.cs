@@ -17,7 +17,7 @@ namespace _3342FinalProject
         protected void Page_Load(object sender, EventArgs e)
         {
             utility = new Utility();
-            DataSet userData = utility.GetUserByID(1);
+            DataSet userData = utility.GetUserByID((int)Session["UserID"]);
             funds = Convert.ToDecimal(userData.Tables[0].Rows[0][4]);
             lblFunds.Text = "Funds: $" + funds.ToString("#.##");
             lblName.Text = userData.Tables[0].Rows[0][1].ToString();

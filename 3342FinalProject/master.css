@@ -1,6 +1,8 @@
 ﻿body {
 }
 
-.btnView {
-    
+.dynamicbtn {
+    margin-top: 5px;
+    margin-left: 17%;
+    margin-bottom:15px;
 }

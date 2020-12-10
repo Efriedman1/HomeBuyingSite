@@ -74,7 +74,7 @@ namespace _3342FinalProject
             utility = new Utility();
             utility.PrintToDebug(propertyID, "PropertyID");
             DataRow propertyRow = utility.GetPropertyByID(propertyID).Tables[0].Rows[0];
-            lblAddress.Text = propertyRow[0].ToString();
+            lblAddress.Text = propertyRow[0].ToString();            
             lblRent.Text = "$" + propertyRow[1].ToString() + "/mo.";
             lblBedAmount.Text = "Beds: " + propertyRow[2].ToString();
             lblBathAmount.Text = "Baths: " + propertyRow[3].ToString();

@@ -19,6 +19,13 @@ namespace _3342FinalProject
             {
                 Session["UserType"] = -1;
             }
+            if (!IsPostBack && Request.Cookies["HomeRentalCookie"] != null)
+            {
+                HttpCookie cookie = Request.Cookies["HomeRentalCookie"];
+
+                txtUsername.Text = cookie.Values["Name"].ToString();
+                txtPw.Text = cookie.Values["Password"].ToString();
+            }
         }
 
         protected void btnView_Click(object sender, EventArgs e)
@@ -35,6 +42,10 @@ namespace _3342FinalProject
                 Session["UserType"] = utility.GetUserByID(userId).Tables[0].Rows[0][5];
                 utility.PrintToDebug(userId, "Login ID");
                 utility.PrintToDebug((int)Session["UserType"], "Login User Type");
+                if (chkCookies.Checked)
+                {
+                    saveCookies();
+                }
                 Response.Redirect("Homepage.aspx");
             } 
             else
@@ -52,6 +63,15 @@ namespace _3342FinalProject
         protected void btnLostPassword_Click(object sender, EventArgs e)
         {
             Response.Redirect("RetrievePassword.aspx");
+        }
+
+        void saveCookies()
+        {
+            HttpCookie myCookie = new HttpCookie("HomeRentalCookie");
+            myCookie.Values["Name"] = txtUsername.Text;
+            myCookie.Values["Password"] = txtPw.Text;
+            myCookie.Expires = new DateTime(2025, 1, 1);
+            Response.Cookies.Add(myCookie);            
         }
     }
 }

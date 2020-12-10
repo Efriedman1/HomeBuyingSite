@@ -26,11 +26,12 @@ namespace _3342FinalProject
             try
             {
                 DataRow propertyRow = utility.GetPropertyByID(Convert.ToInt32(Session["PropertyID"])).Tables[0].Rows[0];
-                lblAddress.Text = propertyRow[0].ToString();
-                lblRent.Text = propertyRow[1].ToString();
-                lblBedAmount.Text = propertyRow[2].ToString();
-                lblBathAmount.Text = propertyRow[3].ToString();
-                lblDescription.Text = propertyRow[4].ToString();
+                lblAddress.Text = "Address: " + propertyRow[0].ToString();
+                decimal rent = Convert.ToDecimal(propertyRow[1]);
+                lblRent.Text = "Monthly Rent: $" + rent.ToString("#.##");
+                lblBedAmount.Text = "Beds: " + propertyRow[2].ToString();
+                lblBathAmount.Text = "Baths: " + propertyRow[3].ToString();
+                lblDescription.Text = "Description :" + propertyRow[4].ToString();
                 imgProperty.ImageUrl = propertyRow[5].ToString();
             }
             catch (Exception ex)
@@ -43,6 +44,7 @@ namespace _3342FinalProject
         protected void btnRent_Click(object sender, EventArgs e)
         {
             //Add properties to user list
+            //Create payments for user
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
