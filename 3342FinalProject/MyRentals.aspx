@@ -5,5 +5,6 @@
     <h3>Properties</h3>
         <div id="propertiesDiv">No properties</div>
     <h3>Payments</h3>
+    <asp:Label ID ="lblFunds" runat="server" Text="Wallet: $0.00"></asp:Label>
         <div id="paymentsDiv">No current payments</div>
 </asp:Content>

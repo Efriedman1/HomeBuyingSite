@@ -147,15 +147,24 @@ namespace PropertyLibrary
             }
         }
 
-        public Boolean AddFunds(double amount, int id)
+        public Boolean AddFunds(Decimal amount, int id)
         {
             SqlCommand paymentCommand = new SqlCommand();
             paymentCommand.CommandType = CommandType.StoredProcedure;
             paymentCommand.CommandText = "TP_AddFunds";
-            SqlParameter idParameter = new SqlParameter("@amount", amount);
-            idParameter.SqlDbType = SqlDbType.Money;
+
+            SqlParameter idParameter = new SqlParameter("@id", id);
+            idParameter.Direction = ParameterDirection.Input;
+            idParameter.SqlDbType = SqlDbType.Int;
             idParameter.Size = 8;
+
+            SqlParameter amountParameter = new SqlParameter("@amount", amount);
+            amountParameter.Direction = ParameterDirection.Input;
+            amountParameter.SqlDbType = SqlDbType.Money;
+            amountParameter.Size = 8;
+            paymentCommand.Parameters.Add(amountParameter);
             paymentCommand.Parameters.Add(idParameter);
+
             int ret = propertiesDB.DoUpdateUsingCmdObj(paymentCommand);
             return ret > 0;
         }
@@ -223,7 +232,7 @@ namespace PropertyLibrary
         {
             SqlCommand paymentCommand = new SqlCommand();
             paymentCommand.CommandType = CommandType.StoredProcedure;
-            paymentCommand.CommandText = "TP_SetPaymentPaid";
+            paymentCommand.CommandText = "TP_MakePayment";
             SqlParameter idParameter = new SqlParameter("@id", id);
             idParameter.SqlDbType = SqlDbType.Int;
             idParameter.Size = 8;

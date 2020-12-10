@@ -42,5 +42,10 @@ namespace _3342FinalProject
         {
             Response.Redirect("Signup.aspx");
         }
+
+        protected void btnLostPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

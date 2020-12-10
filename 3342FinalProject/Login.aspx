@@ -12,7 +12,7 @@
                 <asp:TextBox ID="txtUsername" runat="server" class="form-control" placeholder="Username" autofocus=""></asp:TextBox>
                 <label for="txtPw" class="sr-only">Password</label>
                 <asp:TextBox ID="txtPw" runat="server" class="form-control" placeholder="Password" autofocus=""></asp:TextBox>
-                <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible ="false" Text=""></asp:Label>
+                <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false" Text=""></asp:Label>
                 <p>
                     <asp:RadioButtonList ID="selectAccountType" runat="server" CssClass="text-left">
                         <asp:ListItem>Renter</asp:ListItem>
@@ -22,6 +22,7 @@
                 <asp:Button ID="btnSubmitLogin" runat="server" class="btn btn-md btn-primary btn-block" type="submit" Text="Login" OnClick="btnSubmitLogin_Click" />
                 <asp:Button ID="btnView" runat="server" class="btn btn-md btn-info btn-block" type="submit" Text="Continue as Guest" OnClick="btnView_Click" />
                 <asp:Button ID="btnCreateAccount" runat="server" class="btn btn-link" Text="Create Account" OnClick="btnCreateAccount_Click" />
+                <asp:Button ID="btnLostPassword" runat="server" class="btn btn-link" Text="I Forgot My Password" OnClick="btnLostPassword_Click" />
                 <p class="mt-5 mb-3 text-muted">Copyright &copy; 2020</p>
             </div>
         </div>
