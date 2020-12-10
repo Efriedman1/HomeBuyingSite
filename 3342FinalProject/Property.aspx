@@ -13,6 +13,7 @@
     <asp:Button ID="btnRent" runat="server" Text="Rent Property" OnClick="btnRent_Click" CssClass="btn btn-primary"/>
      <br />
      <asp:Button ID="btnCreate" runat="server" Text="Edit Property Details" OnClick="btnCreate_Click" />
+    <asp:Button ID="btnDelete" runat="server" Text="Delete Property" OnClick="btnDelete_Click" />
          <p><asp:Label ID="lblImage" runat="server" Text="Property Image: " class="mr-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
                 <asp:Image ID="PropImage" runat="server" ImageUrl="~/images/default.png" Width="50" Height="50" class="rounded" Visible="False" />
                 <asp:DropDownList ID="ddImage" runat="server" AutoPostBack="True" Visible="False">

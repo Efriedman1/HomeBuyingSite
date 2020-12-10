@@ -43,7 +43,7 @@ namespace _3342FinalProject
                 for (int i = 0; i < prop.Count; i++)
                 {
                     PropertyControl ctrl = (PropertyControl)LoadControl("PropertyControl.ascx");
-                    //ctrl.PropertyID = prop[i].PropertyID;
+                    ctrl.PropertyID = prop[i].PropertyID;
                     ctrl.Address = prop[i].Address;
                     ctrl.ImageUrl = prop[i].Image;
                     ctrl.Baths = "Baths: " + prop[i].Bathrooms.ToString();

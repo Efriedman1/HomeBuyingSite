@@ -69,7 +69,7 @@ namespace _3342FinalProject
             if (prop != null)
             {
        
-                ddImage.Text = prop.Image;
+                PropImage.ImageUrl = prop.Image;
                 tbName.Text = prop.Owner;
                 tbAddress.Text = prop.Address;
                 tbBeds.Text = prop.Beds.ToString();
@@ -169,6 +169,14 @@ namespace _3342FinalProject
             tbDescription.Visible = tf;
             btnBack.Visible = tf;
             btnSave.Visible = tf;
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            WebRequest request = WebRequest.Create(webApiUrl + "DeleteProperty/" + Convert.ToInt32(Session["PropertyID"]));
+            request.Method = "DELETE";
+            WebResponse response = request.GetResponse();
+            Response.Redirect("Homepage.aspx");
         }
     }
 }

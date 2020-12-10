@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using PropertiesAPI.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
-using PropertiesAPI.Models;
 using Utilities;
 
 namespace PropertiesAPI.Controllers
@@ -123,7 +120,7 @@ namespace PropertiesAPI.Controllers
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.CommandText = "TP_EditProperty";
 
-                objCommand.Parameters.AddWithValue("@PropertyID", 10);
+                objCommand.Parameters.AddWithValue("@PropertyID", prop.PropertyID);
                 objCommand.Parameters.AddWithValue("@OwnerID", prop.OwnerID);
                 objCommand.Parameters.AddWithValue("@OwnerName", prop.Owner);
                 objCommand.Parameters.AddWithValue("@Address", prop.Address);
@@ -145,6 +142,34 @@ namespace PropertiesAPI.Controllers
                 return false;
             }
         }
+
+        [HttpDelete]
+        [HttpDelete("DeleteProperty/{propId}")]
+        public Boolean deletePropById(int propId)
+        {
+
+            if (propId != null)
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_DeleteProperty";
+                objCommand.Parameters.AddWithValue("@PropertyID", propId);
+
+                int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (retVal > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
+
 
