@@ -33,9 +33,9 @@ namespace PropertiesAPI.Controllers
             for(int i = 0; i < count; i++)
             {
                 Properties prop = new Properties();
-                prop.PropertyID = Convert.ToInt32(objDB.GetField("PropertyID", i));
+                //prop.PropertyID = Convert.ToInt32(objDB.GetField("PropertyID", i));
                 prop.Address = objDB.GetField("Address", i).ToString();
-                prop.MonthlyRent = Convert.ToDouble(objDB.GetField("Rent", i));
+                prop.MonthlyRent = Convert.ToDecimal(objDB.GetField("Rent", i));
                 prop.Beds = Convert.ToInt32(objDB.GetField("Beds", i));
                 prop.Bathrooms = Convert.ToInt32(objDB.GetField("Baths", i));
                 prop.Description = objDB.GetField("Description", i).ToString();
@@ -55,13 +55,48 @@ namespace PropertiesAPI.Controllers
             return "Web API - HTTP Get with propertyID = " + propId;
         }
 
-        [HttpPost] //route: api/properties (default route)
-        [HttpPost("SaveProperty")] //route: api/properties/SaveProperty
-        public string Post(string address, string image, string owner, int beds, int baths, double rent, string description)
+        // This method accepts a Property object and creates a new record based on the values
+        // set for the object passed into the method.
+        [HttpPost()]                
+        [HttpPost("AddProperty")]   
+        public Boolean AddProperty([FromBody]Properties prop)
         {
-            
+            if (prop != null)
+            {
+                DBConnect objDB = new DBConnect();
+                SqlCommand objCommand = new SqlCommand();
+
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_AddProperty";
+
+                objCommand.Parameters.AddWithValue("@OwnerID", prop.OwnerID);
+                objCommand.Parameters.AddWithValue("@OwnerName", prop.Owner);
+                objCommand.Parameters.AddWithValue("@Address", prop.Address);
+                objCommand.Parameters.AddWithValue("@Beds", prop.Beds);
+                objCommand.Parameters.AddWithValue("@Baths", prop.Bathrooms);
+                objCommand.Parameters.AddWithValue("@Rent", prop.MonthlyRent);
+                objCommand.Parameters.AddWithValue("@Description", prop.Description);
+                objCommand.Parameters.AddWithValue("@ImageUrl", prop.Image);
+
+                int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
+
+                if (retVal > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 
-
 }
+
+
+//SqlParameter rentParameter = new SqlParameter("@Rent", prop.MonthlyRent);
+//rentParameter.SqlDbType = SqlDbType.Money;
+//rentParameter.Direction = ParameterDirection.Input;
+//rentParameter.Size = 8;
+//objCommand.Parameters.Add(rentParameter);
