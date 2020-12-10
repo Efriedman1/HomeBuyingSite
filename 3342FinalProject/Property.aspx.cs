@@ -43,7 +43,6 @@ namespace _3342FinalProject
         protected void btnRent_Click(object sender, EventArgs e)
         {
             //Add properties to user list
-
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -81,9 +80,7 @@ namespace _3342FinalProject
             else
 
             {
-
                 Response.Write("<script>alert('No record found')</script>");
-
             }
         }
 

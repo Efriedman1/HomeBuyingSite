@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropertyLibrary
 {
-    class Payments
+    public class Payments
     {
     }
 }
