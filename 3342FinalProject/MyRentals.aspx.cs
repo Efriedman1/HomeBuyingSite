@@ -31,13 +31,15 @@ namespace _3342FinalProject
                 viewButton.Text = "Make Payment";
                 viewButton.CssClass = "btn btnView";
                 viewButton.Click += new EventHandler((s, a) => viewButton_Click(s, a, ctrl.PaymentID));
-                Form.Controls.Add(viewButton);                
+                Form.Controls.Add(viewButton);   
+                
             }
         }
 
         void viewButton_Click(object sender, EventArgs e, int id)
         {
-            utility.PrintToDebug(id, "Payment Click ID");            
+            utility.PrintToDebug(id, "Payment Click ID");
+            utility.SetPaymentPaid(id);
         }
     }
 }
