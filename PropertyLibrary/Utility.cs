@@ -34,6 +34,11 @@ namespace PropertyLibrary
             return false;
         }
 
+        public object getpropertybyid(object p)
+        {
+            throw new NotImplementedException();
+        }
+
         public Boolean isEmail(String str)
         {
             try
