@@ -73,6 +73,7 @@
     <Content Include="img\houses\02.jpg" />
     <Content Include="img\houses\03.jpg" />
     <Content Include="img\houses\04.jpg" />
+    <Content Include="img\icon.png" />
     <Content Include="Login.aspx" />
     <Content Include="master.css" />
     <Content Include="MyProperties.aspx" />

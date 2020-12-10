@@ -26,9 +26,20 @@ namespace _3342FinalProject
                     btnWallet.Visible = false;
                     btnMyRentals.Visible = false;
                 }
+                else
+                {
+                    //user is a guest
+                    btnWallet.Visible = false;
+                    btnHome.Visible = false;
+                    btnMyRentals.Visible = false;
+                }
             }
             catch
             {
+                //user has not signed in, automatic redirect to login screen
+                btnWallet.Visible = false;
+                btnHome.Visible = false;
+                btnMyRentals.Visible = false;
                 Response.Redirect("Login.aspx");
             }
         }

@@ -89,18 +89,18 @@ namespace _3342FinalProject
 
                 if (utility.AddUser(user.UserName, user.Password, user.SecurityAnswers, user.WalletAmount, user.UserType, user.Email, user.Address, user.BillingAddress))
                 {
-                    txtUsername.Visible = false;
-                    txtAddress.Visible = false;
-                    txtBilling.Visible = false;
-                    txtEmail.Visible = false;
-                    txtPw1.Visible = false;
-                    txtPw2.Visible = false;
-                    txtSecurity1.Visible = false;
-                    txtSecurity2.Visible = false;
-                    txtSecurity3.Visible = false;
-                    lblError.Visible = true;
+                    //txtUsername.Visible = false;
+                    //txtAddress.Visible = false;
+                    //txtBilling.Visible = false;
+                    //txtEmail.Visible = false;
+                    //txtPw1.Visible = false;
+                    //txtPw2.Visible = false;
+                    //txtSecurity1.Visible = false;
+                    //txtSecurity2.Visible = false;
+                    //txtSecurity3.Visible = false;
+                    //lblError.Visible = true;                    
                     lblError.ForeColor = Color.Green;
-                    lblError.Text = "Account created";
+                    lblError.Text = "Account created, please try to login";
                 }
                 else
                 {
