@@ -15,12 +15,14 @@ namespace _3342FinalProject
             {
                 if ((int)Session["userType"] == 0)
                 {
+                    //user is a renter
                     btnWallet.Visible = true;
                     btnHome.Visible = true;
                     btnMyRentals.Visible = true;
                 }
-                else
+                else if((int)Session["userType"] == 1)
                 {
+                    //user is a landlord
                     btnWallet.Visible = false;
                     btnMyRentals.Visible = false;
                 }

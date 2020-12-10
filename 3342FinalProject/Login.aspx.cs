@@ -32,8 +32,9 @@ namespace _3342FinalProject
             if (userId > 0)
             {
                 Session["UserID"] = userId;
-                Session["UserType"] = 0;
+                Session["UserType"] = utility.GetUserByID(userId).Tables[0].Rows[0][5];
                 utility.PrintToDebug(userId, "Login ID");
+                utility.PrintToDebug((int)Session["UserType"], "Login User Type");
                 Response.Redirect("Homepage.aspx");
             } 
             else

@@ -19,19 +19,32 @@ namespace _3342FinalProject
             utility = new Utility();
             DataSet userData = utility.GetUserByID(1);
             funds = Convert.ToDecimal(userData.Tables[0].Rows[0][4]);
-            lblFunds.Text = "Funds: $" + userData.Tables[0].Rows[0][4].ToString();
+            lblFunds.Text = "Funds: $" + funds.ToString("#.##");
             lblName.Text = userData.Tables[0].Rows[0][1].ToString();
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            decimal amount;
             try
             {
-                utility.AddFunds(Convert.ToDecimal(txtAmount.Text) + funds, 1);                
+                amount = Convert.ToDecimal(txtAmount.Text);
+                if (utility.isValidMoneyDecimal(amount))
+                {               
+                    utility.AddFunds(amount + funds, 1);
+                    Response.Redirect("Wallet.aspx");
+                }
+                else
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Please enter a valid amount of money.";
+                    return;
+                }
             }
             catch
             {
-                //Error adding funds
+                lblError.Visible = true;
+                lblError.Text = "Please enter a valid amount of money.";
             }
         }
     }
