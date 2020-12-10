@@ -18,7 +18,8 @@ namespace _3342FinalProject
     {
 
         String webApiUrl = "https://localhost:44328/api/properties/";
-      
+        String webApiUrl2 = "https://localhost:44383/api/wallet/";
+
         Utility utility;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -58,7 +59,7 @@ namespace _3342FinalProject
                 //Send the Property object to the Web API that will be used to store a new property record in the database.
                 // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
 
-                WebRequest request = WebRequest.Create(webApiUrl + "AddPayment/");
+                WebRequest request = WebRequest.Create(webApiUrl2 + "AddPayment/");
                 request.Method = "POST";
                 request.ContentLength = jsonProp.Length;
                 request.ContentType = "application/json";
