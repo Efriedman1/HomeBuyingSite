@@ -20,7 +20,6 @@ namespace _3342FinalProject
         Utility utility = new Utility();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
                 DataTable propertiesTable = utility.GetProperties().Tables[0];
@@ -48,7 +47,7 @@ namespace _3342FinalProject
                     ctrl.ImageUrl = prop[i].Image;
                     ctrl.Baths = "Baths: " + prop[i].Bathrooms.ToString();
                     ctrl.Beds = "Beds: " + prop[i].Beds.ToString();
-                    ctrl.Rent = "Monthly Rent: " + prop[i].MonthlyRent.ToString("#.##");
+                    ctrl.Rent = "Monthly Rent: $" + prop[i].MonthlyRent.ToString("#.##") + "/mo.";
 
                     Form.Controls.Add(ctrl);
                     Button viewButton = new Button();
@@ -62,9 +61,7 @@ namespace _3342FinalProject
             catch (Exception ex)
             {
                 Response.Write("<script>alert('Failed to display properties.')</script>");
-            }
-      
-         
+            }            
         }
 
         void viewButton_Click(object sender, EventArgs e, int id)

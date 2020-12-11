@@ -19,12 +19,15 @@ namespace _3342FinalProject
                     btnWallet.Visible = true;
                     btnHome.Visible = true;
                     btnMyRentals.Visible = true;
+                    btnProperties.Visible = false;
                 }
                 else if((int)Session["userType"] == 1)
                 {
                     //user is a landlord
-                    btnWallet.Visible = false;
+                    btnWallet.Visible = true;
+                    btnHome.Visible = true;
                     btnMyRentals.Visible = false;
+                    btnProperties.Visible = true;
                 }
                 else
                 {
@@ -32,6 +35,7 @@ namespace _3342FinalProject
                     btnWallet.Visible = false;
                     btnHome.Visible = false;
                     btnMyRentals.Visible = false;
+                    btnProperties.Visible = false;
                 }
             }
             catch
@@ -40,6 +44,7 @@ namespace _3342FinalProject
                 btnWallet.Visible = false;
                 btnHome.Visible = false;
                 btnMyRentals.Visible = false;
+                btnProperties.Visible = false;
                 Response.Redirect("Login.aspx");
             }
         }
@@ -62,6 +67,11 @@ namespace _3342FinalProject
         protected void btnWallet_Click(object sender, EventArgs e)
         {
             Response.Redirect("Wallet.aspx");
+        }
+
+        protected void btnProperties_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyProperties.aspx");
         }
     }
 }
