@@ -20,14 +20,13 @@
             <asp:Button ID="btnDelete" runat="server" Text="Delete Property" OnClick="btnDelete_Click" Visible="false" CssClass="btn btn-light col-2"/>
             <p>
                 <asp:Label ID="lblImage" runat="server" Text="Property Image: " class="mr-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
-            <asp:Image ID="PropImage" runat="server" ImageUrl="~/images/default.png" Width="50" Height="50" class="rounded" Visible="False" />
+            <asp:Image ID="PropImage" runat="server" ImageUrl="img/houses/01.jpg" Width="50" Height="50" class="rounded" Visible="False" />
             <asp:DropDownList ID="ddImage" runat="server" AutoPostBack="True" Visible="False" CssClass="form-control col-2">
-                <asp:ListItem Value="1">1</asp:ListItem>
-                <asp:ListItem Value="2">2</asp:ListItem>
-                <asp:ListItem Value="3">3</asp:ListItem>
-                <asp:ListItem Value="4">4</asp:ListItem>
-                <asp:ListItem Value="5">5</asp:ListItem>
-                <asp:ListItem Selected="True" Value="default">Default</asp:ListItem>
+                <asp:ListItem Selected="True" Value="img/houses/01.jpg">1</asp:ListItem>
+                <asp:ListItem Value="img/houses/02.jpg">2</asp:ListItem>
+                <asp:ListItem Value="img/houses/03.jpg">3</asp:ListItem>
+                <asp:ListItem Value="img/houses/04.jpg">4</asp:ListItem>
+                <asp:ListItem Value="img/houses/00.jpg">5</asp:ListItem>
             </asp:DropDownList>
             <p>
                 <asp:Label ID="lblName" runat="server" Text="Landlord Name: " class="my-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
