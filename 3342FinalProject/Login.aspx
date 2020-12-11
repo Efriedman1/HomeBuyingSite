@@ -22,7 +22,7 @@
                 <asp:Button ID="btnSubmitLogin" runat="server" class="btn btn-md btn-primary btn-block" type="submit" Text="Login" OnClick="btnSubmitLogin_Click" />
                 <asp:Button ID="btnView" runat="server" class="btn btn-md btn-info btn-block" type="submit" Text="Continue as Guest" OnClick="btnView_Click" />
                 <asp:Button ID="btnCreateAccount" runat="server" class="btn btn-link m-2" Text="Create Account" OnClick="btnCreateAccount_Click" />
-                <asp:Button ID="btnLostPassword" runat="server" class="btn btn-link" Text="I Forgot My Password" OnClick="btnLostPassword_Click" Visible ="false"/>
+                <asp:Button ID="btnLostPassword" runat="server" class="btn btn-link" Text="I Forgot My Password" OnClick="btnLostPassword_Click"/>
                 <p class="mt-5 mb-3 text-muted">Copyright &copy; 2020</p>
             </div>
         </div>
