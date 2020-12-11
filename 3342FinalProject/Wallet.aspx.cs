@@ -13,6 +13,7 @@ namespace _3342FinalProject
     {
         Utility utility;
         Decimal funds;
+        DataSet userData;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,10 +33,16 @@ namespace _3342FinalProject
                 Response.Redirect("Login.aspx");
             }
 
-            DataSet userData = utility.GetUserByID((int)Session["UserID"]);
+            userData = utility.GetUserByID((int)Session["UserID"]);
             funds = Convert.ToDecimal(userData.Tables[0].Rows[0][4]);
-            lblFunds.Text = "Funds: $" + funds.ToString("#.##");
+            this.lblFunds.Text = "Funds: $" + funds.ToString("#.##");
             lblName.Text = userData.Tables[0].Rows[0][1].ToString();
+        }
+
+        private void AjaxUpdateWallet(decimal amount)
+        {            
+            funds = Convert.ToDecimal(userData.Tables[0].Rows[0][4]);
+            this.lblFunds.Text = "Funds: $" + funds.ToString("#.##");
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -45,9 +52,11 @@ namespace _3342FinalProject
             {
                 amount = Convert.ToDecimal(txtAmount.Text);
                 if (utility.isValidMoneyDecimal(amount))
-                {               
-                    utility.AddFunds(amount + funds, 1);
-                    Response.Redirect("Wallet.aspx");
+                {
+                    utility.AddFunds(amount + funds, (int)Session["UserID"]);
+                    userData = utility.GetUserByID((int)Session["UserID"]);
+                    AjaxUpdateWallet(amount);
+                    UpdatePanel1.Update();
                 }
                 else
                 {

@@ -76,49 +76,6 @@ namespace PropertyLibrary
             SqlCommand userCommand = new SqlCommand();
             userCommand.CommandType = CommandType.StoredProcedure;
             userCommand.CommandText = "TP_AddUser";
-
-            //SqlParameter nameParameter = new SqlParameter("@name", name);
-            //nameParameter.Direction = ParameterDirection.Input;
-            //nameParameter.SqlDbType = SqlDbType.VarChar;
-            //nameParameter.Size = 50;
-            //SqlParameter pwParameter = new SqlParameter("@password", password);
-            //pwParameter.Direction = ParameterDirection.Input;
-            //pwParameter.SqlDbType = SqlDbType.VarChar;
-            //pwParameter.Size = 50;
-            //SqlParameter securityParameter = new SqlParameter("@security", security);
-            //securityParameter.Direction = ParameterDirection.Input;
-            //securityParameter.SqlDbType = SqlDbType.VarChar;
-            //securityParameter.Size = 255;
-            //SqlParameter fundsParameter = new SqlParameter("@funds", funds);
-            //fundsParameter.Direction = ParameterDirection.Input;
-            //fundsParameter.SqlDbType = SqlDbType.Decimal;
-            //fundsParameter.Size = 8;
-            //SqlParameter typeParameter = new SqlParameter("@type", type);
-            //typeParameter.Direction = ParameterDirection.Input;
-            //typeParameter.SqlDbType = SqlDbType.Int;
-            //typeParameter.Size = 8;
-            //SqlParameter emailParameter = new SqlParameter("@email", email);
-            //emailParameter.Direction = ParameterDirection.Input;
-            //emailParameter.SqlDbType = SqlDbType.VarChar;
-            //emailParameter.Size = 50;
-            //SqlParameter addressParameter = new SqlParameter("@address", address);
-            //addressParameter.Direction = ParameterDirection.Input;
-            //addressParameter.SqlDbType = SqlDbType.VarChar;
-            //addressParameter.Size = 255;
-            //SqlParameter billingParameter = new SqlParameter("@billing", billing);
-            //billingParameter.Direction = ParameterDirection.Input;
-            //billingParameter.SqlDbType = SqlDbType.VarChar;
-            //billingParameter.Size = 255;
-
-            //userCommand.Parameters.Add(nameParameter);
-            //userCommand.Parameters.Add(pwParameter);
-            //userCommand.Parameters.Add(securityParameter);
-            //userCommand.Parameters.Add(fundsParameter);
-            //userCommand.Parameters.Add(typeParameter);
-            //userCommand.Parameters.Add(emailParameter);
-            //userCommand.Parameters.Add(addressParameter);
-            //userCommand.Parameters.Add(billingParameter);
-
             userCommand.Parameters.AddWithValue("@name", name);
             userCommand.Parameters.AddWithValue("@password", password);
             userCommand.Parameters.AddWithValue("@security", security);
@@ -130,7 +87,17 @@ namespace PropertyLibrary
 
             int ret = propertiesDB.DoUpdateUsingCmdObj(userCommand);
             return ret > 0;
-        }        
+        } 
+        
+        public int GetUserIDByEmail(string email)
+        {
+            SqlCommand userCommand = new SqlCommand();
+            userCommand.CommandType = CommandType.StoredProcedure;
+            userCommand.CommandText = "TP_GetUserIDByEmail";
+            userCommand.Parameters.AddWithValue("@Email", email);
+            DataSet userData = propertiesDB.GetDataSetUsingCmdObj(userCommand);
+            return Convert.ToInt32(userData.Tables[0].Rows[0][0]);
+        }
 
         public Boolean CheckUserNameTaken(String name)
         {
