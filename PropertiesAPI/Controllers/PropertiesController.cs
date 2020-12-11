@@ -147,9 +147,6 @@ namespace PropertiesAPI.Controllers
         [HttpDelete("DeleteProperty/{propId}")]
         public Boolean deletePropById(int propId)
         {
-
-            if (propId != null)
-            {
                 DBConnect objDB = new DBConnect();
                 SqlCommand objCommand = new SqlCommand();
 
@@ -163,11 +160,6 @@ namespace PropertiesAPI.Controllers
                     return true;
                 else
                     return false;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }

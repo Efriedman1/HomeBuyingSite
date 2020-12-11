@@ -18,11 +18,27 @@ namespace _3342FinalProject
     {
 
         String webApiUrl = "https://localhost:44328/api/properties/";
+        String webApiUrl2 = "https://localhost:44383/api/wallet/";
 
         Utility utility;
         protected void Page_Load(object sender, EventArgs e)
         {
             utility = new Utility();
+
+            try
+            {
+                if ((int)Session["userType"] < 0)
+                {
+                    //user is a not a renter or landlord, automatic redirect
+                    Response.Redirect("Login.aspx");
+                }
+            }
+            catch
+            {
+                //user has not signed in, automatic redirect to login screen
+                Response.Redirect("Login.aspx");
+            }
+
             try
             {
                 DataRow propertyRow = utility.GetPropertyByID(Convert.ToInt32(Session["PropertyID"])).Tables[0].Rows[0];
@@ -38,13 +54,65 @@ namespace _3342FinalProject
             {
                 utility.PrintToDebug(ex.ToString(), "Error loading property");
             }
-
+            if ((int)Session["UserType"] == 1)
+            {
+                btnCreate.Visible = true;
+                btnDelete.Visible = true;
+            }
         }
 
         protected void btnRent_Click(object sender, EventArgs e)
         {
-            //Add properties to user list
-            //Create payments for user
+            Payments pay = new Payments();
+
+            pay.PaymentDate = DateTime.Now.ToString();
+            pay.PaymentAmount = 500;
+            pay.PropertyID = Convert.ToInt32(Session["PropertyID"]);
+            pay.PropertyID = 2;
+
+            // Serialize a Property object into a JSON string.
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            String jsonProp = js.Serialize(pay);
+
+            try
+            {
+                //Send the Property object to the Web API that will be used to store a new property record in the database.
+                // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
+
+                WebRequest request = WebRequest.Create(webApiUrl2 + "AddPayment/");
+                request.Method = "POST";
+                request.ContentLength = jsonProp.Length;
+                request.ContentType = "application/json";
+
+
+                // Write the JSON data to the Web Request
+                StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                writer.Write(jsonProp);
+                writer.Flush();
+                writer.Close();
+
+                // Read the data from the Web Response, which requires working with streams.
+                WebResponse response = request.GetResponse();
+                Stream theDataStream = response.GetResponseStream();
+
+                StreamReader reader = new StreamReader(theDataStream);
+                String data = reader.ReadToEnd();
+                reader.Close();
+                response.Close();
+
+                if (data == "true")
+                {
+                    Response.Write("<script>alert('Property Successfully Rented')</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Failed to rent property. The data wasn't recorded.')</script>");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Error: " + ex.Message + "')</script>");
+            }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)

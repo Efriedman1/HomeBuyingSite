@@ -14,14 +14,14 @@
             <asp:Label ID="lblBedAmount" runat="server"></asp:Label>
             <asp:Label ID="lblBathAmount" runat="server"></asp:Label>
             <asp:Label ID="lblDescription" runat="server"></asp:Label>
-            <asp:Button ID="btnRent" runat="server" Text="Rent Property" OnClick="btnRent_Click" CssClass="btn btn-primary" />
+            <asp:Button ID="btnRent" runat="server" Text="Rent Property" OnClick="btnRent_Click" CssClass="btn btn-primary col-2" />
             <br />
-            <asp:Button ID="btnCreate" runat="server" Text="Edit Property Details" OnClick="btnCreate_Click" />
-            <asp:Button ID="btnDelete" runat="server" Text="Delete Property" OnClick="btnDelete_Click" />
+            <asp:Button ID="btnCreate" runat="server" Text="Edit Property Details" OnClick="btnCreate_Click" Visible="false" CssClass="btn btn-light col-2 mb-2"/>
+            <asp:Button ID="btnDelete" runat="server" Text="Delete Property" OnClick="btnDelete_Click" Visible="false" CssClass="btn btn-light col-2"/>
             <p>
                 <asp:Label ID="lblImage" runat="server" Text="Property Image: " class="mr-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
             <asp:Image ID="PropImage" runat="server" ImageUrl="~/images/default.png" Width="50" Height="50" class="rounded" Visible="False" />
-            <asp:DropDownList ID="ddImage" runat="server" AutoPostBack="True" Visible="False">
+            <asp:DropDownList ID="ddImage" runat="server" AutoPostBack="True" Visible="False" CssClass="form-control col-2">
                 <asp:ListItem Value="1">1</asp:ListItem>
                 <asp:ListItem Value="2">2</asp:ListItem>
                 <asp:ListItem Value="3">3</asp:ListItem>

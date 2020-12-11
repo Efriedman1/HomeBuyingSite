@@ -17,6 +17,21 @@ namespace _3342FinalProject
         protected void Page_Load(object sender, EventArgs e)
         {
             utility = new Utility();
+
+            try
+            {
+                if ((int)Session["userType"] < 0)
+                {
+                    //user is a not a renter or landlord, automatic redirect
+                    Response.Redirect("Login.aspx");
+                }
+            }
+            catch
+            {
+                //user has not signed in, automatic redirect to login screen
+                Response.Redirect("Login.aspx");
+            }
+
             DataSet userData = utility.GetUserByID((int)Session["UserID"]);
             funds = Convert.ToDecimal(userData.Tables[0].Rows[0][4]);
             lblFunds.Text = "Funds: $" + funds.ToString("#.##");
