@@ -119,7 +119,7 @@ namespace _3342FinalProject
             {
                 
                 PropImage.ImageUrl = prop.Image;
-                tbName.Text = Session["OwnerName"].ToString();
+                tbName.Text = prop.Owner;
                 tbAddress.Text = prop.Address;
                 tbBeds.Text = prop.Beds.ToString();
                 tbBaths.Text = prop.Bathrooms.ToString();
