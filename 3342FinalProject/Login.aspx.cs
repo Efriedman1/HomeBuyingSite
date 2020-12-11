@@ -75,11 +75,13 @@ namespace _3342FinalProject
 
         protected void btnDeleteCookie_Click(object sender, EventArgs e)
         {
-            HttpCookie myCookie = Request.Cookies["HomeRentalCookie"];
-            myCookie.Values["Name"] = "";
-            myCookie.Values["Password"] = "";
-            myCookie.Expires = DateTime.Today.AddDays(-1);
-            btnDeleteCookie.Visible = false;
+            if (Request.Cookies["HomeRentalCookie"] != null)
+            {
+                var cookie = new HttpCookie("HomeRentalCookie");
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(cookie);
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }
