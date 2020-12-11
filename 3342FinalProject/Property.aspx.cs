@@ -117,9 +117,9 @@ namespace _3342FinalProject
 
             if (prop != null)
             {
-       
+                
                 PropImage.ImageUrl = prop.Image;
-                tbName.Text = prop.Owner;
+                tbName.Text = Session["OwnerName"].ToString();
                 tbAddress.Text = prop.Address;
                 tbBeds.Text = prop.Beds.ToString();
                 tbBaths.Text = prop.Bathrooms.ToString();
@@ -143,6 +143,7 @@ namespace _3342FinalProject
         {
             Properties prop = new Properties();
 
+            prop.PropertyID = Convert.ToInt32(Session["PropertyID"]);
             prop.OwnerID = 10;
             prop.Image = ddImage.Text;
             prop.Address = tbAddress.Text;
