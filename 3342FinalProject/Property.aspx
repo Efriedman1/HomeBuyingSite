@@ -33,7 +33,7 @@
             <p>
                 <asp:TextBox ID="tbName" runat="server" class="form-control my-2 my-sm-0" Width="500px" Visible="False"></asp:TextBox></p>
             <p>
-                <asp:Label ID="Label1" runat="server" Text="Address: " class="my-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
+                <asp:Label ID="lblAddress2" runat="server" Text="Address: " class="my-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
             <p>
                 <asp:TextBox ID="tbAddress" runat="server" class="form-control my-2 my-sm-0" Width="500px" Visible="False"></asp:TextBox></p>
             <p>
@@ -45,11 +45,11 @@
             <p>
                 <asp:TextBox ID="tbBaths" runat="server" class="form-control my-2 my-sm-0" Width="500px" Visible="False"></asp:TextBox></p>
             <p>
-                <asp:Label ID="Label2" runat="server" Text="Monthly Rent ($): " class="my-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
+                <asp:Label ID="lblRent2" runat="server" Text="Monthly Rent ($): " class="my-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
             <p>
                 <asp:TextBox ID="tbRent" runat="server" class="form-control my-2 my-sm-0" Width="500px" Visible="False"></asp:TextBox></p>
             <p>
-                <asp:Label ID="Label3" runat="server" Text="Property Description: " class="my-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
+                <asp:Label ID="lblDescription2" runat="server" Text="Property Description: " class="my-sm-2" Font-Bold="True" Visible="False"></asp:Label></p>
             <p>
                 <asp:TextBox ID="tbDescription" runat="server" class="form-control my-2 my-sm-0" Width="500px" Visible="False"></asp:TextBox></p>
 

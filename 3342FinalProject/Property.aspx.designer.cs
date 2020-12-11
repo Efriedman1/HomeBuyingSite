@@ -148,13 +148,13 @@ namespace _3342FinalProject {
         protected global::System.Web.UI.WebControls.TextBox tbName;
         
         /// <summary>
-        /// Label1 control.
+        /// lblAddress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblAddress2;
         
         /// <summary>
         /// tbAddress control.
@@ -202,13 +202,13 @@ namespace _3342FinalProject {
         protected global::System.Web.UI.WebControls.TextBox tbBaths;
         
         /// <summary>
-        /// Label2 control.
+        /// lblRent2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblRent2;
         
         /// <summary>
         /// tbRent control.
@@ -220,13 +220,13 @@ namespace _3342FinalProject {
         protected global::System.Web.UI.WebControls.TextBox tbRent;
         
         /// <summary>
-        /// Label3 control.
+        /// lblDescription2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblDescription2;
         
         /// <summary>
         /// tbDescription control.
