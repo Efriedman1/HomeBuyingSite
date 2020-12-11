@@ -48,13 +48,13 @@ namespace _3342FinalProject
                     ctrl.ImageUrl = prop[i].Image;
                     ctrl.Baths = "Baths: " + prop[i].Bathrooms.ToString();
                     ctrl.Beds = "Beds: " + prop[i].Beds.ToString();
-                    ctrl.Rent = "Monthly Rent: " + prop[i].MonthlyRent.ToString();
+                    ctrl.Rent = "Monthly Rent: " + prop[i].MonthlyRent.ToString("#.##");
 
                     Form.Controls.Add(ctrl);
                     Button viewButton = new Button();
                     viewButton.ID = "btnView" + i.ToString();
                     viewButton.Text = "View Property";
-                    viewButton.CssClass = "btn btnView";
+                    viewButton.CssClass = "btn btn-primary dynamicbtn";
                     viewButton.Click += new EventHandler((s, a) => viewButton_Click(s, a, ctrl.PropertyID));
                     Form.Controls.Add(viewButton);
                 }

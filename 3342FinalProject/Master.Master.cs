@@ -15,18 +15,31 @@ namespace _3342FinalProject
             {
                 if ((int)Session["userType"] == 0)
                 {
+                    //user is a renter
                     btnWallet.Visible = true;
                     btnHome.Visible = true;
                     btnMyRentals.Visible = true;
                 }
+                else if((int)Session["userType"] == 1)
+                {
+                    //user is a landlord
+                    btnWallet.Visible = false;
+                    btnMyRentals.Visible = false;
+                }
                 else
                 {
+                    //user is a guest
                     btnWallet.Visible = false;
+                    btnHome.Visible = false;
                     btnMyRentals.Visible = false;
                 }
             }
             catch
             {
+                //user has not signed in, automatic redirect to login screen
+                btnWallet.Visible = false;
+                btnHome.Visible = false;
+                btnMyRentals.Visible = false;
                 Response.Redirect("Login.aspx");
             }
         }

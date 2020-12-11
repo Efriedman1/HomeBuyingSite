@@ -34,6 +34,20 @@ namespace PropertyLibrary
             return false;
         }
 
+        //Check valid money value
+        public Boolean isValidMoneyDecimal(Decimal amount)
+        {
+            if (amount < 0)
+            {
+                return false;
+            }
+            if (decimal.Round(amount, 2) != amount)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public object getpropertybyid(object p)
         {
             throw new NotImplementedException();

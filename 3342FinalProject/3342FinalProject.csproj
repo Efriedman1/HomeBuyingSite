@@ -73,10 +73,12 @@
     <Content Include="img\houses\02.jpg" />
     <Content Include="img\houses\03.jpg" />
     <Content Include="img\houses\04.jpg" />
+    <Content Include="img\icon.png" />
     <Content Include="Login.aspx" />
     <Content Include="master.css" />
     <Content Include="MyProperties.aspx" />
     <Content Include="MyRentals.aspx" />
+    <Content Include="Payment.aspx" />
     <Content Include="PaymentControl.ascx" />
     <Content Include="Property.aspx" />
     <Content Include="PropertyControl.ascx" />
@@ -120,6 +122,13 @@
     </Compile>
     <Compile Include="MyRentals.aspx.designer.cs">
       <DependentUpon>MyRentals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaymentControl.ascx.cs">
       <DependentUpon>PaymentControl.ascx</DependentUpon>

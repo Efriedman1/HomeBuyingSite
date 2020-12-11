@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;  // needed for JSON serializers
 using System.IO;                        // needed for Stream and Stream Reader
 using System.Net;                       // needed for the Web Request
 using System.Data;
+
 using Utilities;
 using System.Data.SqlClient;
 
@@ -21,19 +22,43 @@ namespace _3342FinalProject
         protected void Page_Load(object sender, EventArgs e)
         {
             utility = new Utility();
-            DataSet paymentData = utility.GetPaymentsByUserID(1);
+
+            try
+            {
+                if ((int)Session["userType"] != 0)
+                {
+                    //user is a not a renter, automatic redirect
+                    Response.Redirect("Login.aspx");
+                }
+            }
+            catch
+            {
+                //user has not signed in, automatic redirect to login screen
+                Response.Redirect("Login.aspx");
+            }
+
+            DataSet userData = utility.GetUserByID((int)Session["UserID"]);
+            decimal funds = Convert.ToDecimal(userData.Tables[0].Rows[0][4]);
+            lblFunds.Text = "Funds: $" + funds.ToString("#.##");
+
+            DataSet paymentData = utility.GetPaymentsByUserID((int)Session["UserID"]);
             DataTable paymentTable = paymentData.Tables[0];
             utility.PrintToDebug(paymentTable.Rows.Count, "Count");
+
             for (int i = 0; i < paymentTable.Rows.Count; i++)
             {
-                utility.PrintToDebug(paymentTable.Rows[i][0].ToString(), "Payment ID " + i);                
+                System.Web.UI.HtmlControls.HtmlGenericControl newDiv =
+                    new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+                utility.PrintToDebug(paymentTable.Rows[i][0].ToString(), "Payment ID " + i);
+
                 PaymentControl ctrl = (PaymentControl)LoadControl("PaymentControl.ascx");
                 ctrl.PaymentID = Convert.ToInt32(paymentTable.Rows[i][0]);
-                utility.PrintToDebug(ctrl.PaymentID, "Payment ID");                
+                utility.PrintToDebug(ctrl.PaymentID, "Payment ID");
                 ctrl.DataBind();
                 Form.Controls.Add(ctrl);
                 Button viewButton = new Button();
                 viewButton.ID = "btnView" + i.ToString();
+
                 viewButton.Text = "Pay in Full";
                 viewButton.CssClass = "btn btnView";
                 viewButton.Click += new EventHandler((s, a) => viewButton_Click(s, a, ctrl.PaymentID));
@@ -130,6 +155,13 @@ namespace _3342FinalProject
             request.Method = "DELETE";
             WebResponse response = request.GetResponse();
             Response.Redirect("MyRentals.aspx");
+        }
+
+        void partialButton_Click(object sender, EventArgs e, int id)
+        {
+            //Make partial payment
+            Session["PaymentID"] = id;
+            Response.Redirect("Payment.aspx");
         }
     }
 }

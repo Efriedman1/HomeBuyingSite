@@ -31,6 +31,24 @@ namespace _3342FinalProject {
         protected global::System.Web.UI.WebControls.TextBox txtPw;
         
         /// <summary>
+        /// chkCookies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkCookies;
+        
+        /// <summary>
+        /// btnDeleteCookie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeleteCookie;
+        
+        /// <summary>
         /// lblError control.
         /// </summary>
         /// <remarks>
@@ -38,15 +56,6 @@ namespace _3342FinalProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
-        /// selectAccountType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList selectAccountType;
         
         /// <summary>
         /// btnSubmitLogin control.

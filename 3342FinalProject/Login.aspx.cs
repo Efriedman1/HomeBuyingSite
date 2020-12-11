@@ -19,6 +19,13 @@ namespace _3342FinalProject
             {
                 Session["UserType"] = -1;
             }
+            if (!IsPostBack && Request.Cookies["HomeRentalCookie"] != null && Request.Cookies["HomeRentalCookie"].Values["Name"] != "")
+            {
+                HttpCookie cookie = Request.Cookies["HomeRentalCookie"];
+                txtUsername.Text = cookie.Values["Name"].ToString();
+                txtPw.Text = cookie.Values["Password"].ToString();
+                btnDeleteCookie.Visible = true;
+            }
         }
 
         protected void btnView_Click(object sender, EventArgs e)
@@ -32,8 +39,12 @@ namespace _3342FinalProject
             if (userId > 0)
             {
                 Session["UserID"] = userId;
-                Session["UserType"] = 0;
-                utility.PrintToDebug(userId, "Login ID");
+                Session["UserType"] = utility.GetUserByID(userId).Tables[0].Rows[0][5];
+
+                if (chkCookies.Checked)
+                {
+                    saveCookies();
+                }
                 Response.Redirect("Homepage.aspx");
             } 
             else
@@ -51,6 +62,24 @@ namespace _3342FinalProject
         protected void btnLostPassword_Click(object sender, EventArgs e)
         {
             Response.Redirect("RetrievePassword.aspx");
+        }
+
+        void saveCookies()
+        {
+            HttpCookie myCookie = new HttpCookie("HomeRentalCookie");
+            myCookie.Values["Name"] = txtUsername.Text;
+            myCookie.Values["Password"] = txtPw.Text;            
+            myCookie.Expires = new DateTime(2025, 1, 1);
+            Response.Cookies.Add(myCookie);            
+        }
+
+        protected void btnDeleteCookie_Click(object sender, EventArgs e)
+        {
+            HttpCookie myCookie = Request.Cookies["HomeRentalCookie"];
+            myCookie.Values["Name"] = "";
+            myCookie.Values["Password"] = "";
+            myCookie.Expires = DateTime.Today.AddDays(-1);
+            btnDeleteCookie.Visible = false;
         }
     }
 }
