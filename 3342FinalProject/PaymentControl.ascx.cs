@@ -54,7 +54,7 @@ namespace _3342FinalProject
             utility = new Utility();
             try
             {
-                DataRow propertyRow = utility.GetPaymentByID(paymentID).Tables[0].Rows[0];                
+                DataRow propertyRow = utility.GetPaymentByID(paymentID).Tables[0].Rows[0];
                 lblRent.Text = "$" + propertyRow[3].ToString();
                 lblDue.Text = "Due by: " + propertyRow[1].ToString();
             }

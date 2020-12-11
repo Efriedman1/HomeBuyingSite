@@ -68,7 +68,8 @@ namespace _3342FinalProject
             pay.PaymentDate = DateTime.Now.ToString();
             pay.PaymentAmount = 500;
             pay.PropertyID = Convert.ToInt32(Session["PropertyID"]);
-            pay.PropertyID = 2;
+            //pay.PropertyID = 2;
+            pay.RenterID = Convert.ToInt32(Session["UserID"]);
 
             // Serialize a Property object into a JSON string.
             JavaScriptSerializer js = new JavaScriptSerializer();

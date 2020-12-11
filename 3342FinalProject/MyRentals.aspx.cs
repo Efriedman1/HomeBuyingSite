@@ -48,7 +48,7 @@ namespace _3342FinalProject
             for (int i = 0; i < paymentTable.Rows.Count; i++)
             {
                 System.Web.UI.HtmlControls.HtmlGenericControl newDiv =
-                    new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+                new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
                 utility.PrintToDebug(paymentTable.Rows[i][0].ToString(), "Payment ID " + i);
 
                 PaymentControl ctrl = (PaymentControl)LoadControl("PaymentControl.ascx");
@@ -72,7 +72,7 @@ namespace _3342FinalProject
                 partialPayment.ID = "btnPartial" + i.ToString();
                 partialPayment.Text = "Make Partial Payment";
                 partialPayment.CssClass = "btn-warning btn";
-                partialPayment.Click += new EventHandler((s, a) => partialPayment_Click(s, a, ctrl.PaymentID, tbPartial.Text));
+                partialPayment.Click += new EventHandler((s, a) => partialPayment_Click(s, a, ctrl.PaymentID, tbPartial.Text, ctrl.Rent));
                 Form.Controls.Add(partialPayment);
             }
         }
@@ -84,10 +84,11 @@ namespace _3342FinalProject
             deletePayment(id);
         }
 
-        void partialPayment_Click(object sender, EventArgs e, int id, string amount)
+        void partialPayment_Click(object sender, EventArgs e, int id, string amount, string rent)
         {
+            string rent2 = rent.Remove(0,1);
             decimal amountDecimal = Convert.ToDecimal(amount);
-            decimal calc = 500;
+            decimal calc = Convert.ToDecimal(rent2);
             if (amountDecimal > 0)
             {
                 calc = calc - amountDecimal;
