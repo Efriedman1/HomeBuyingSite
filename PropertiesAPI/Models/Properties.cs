@@ -9,6 +9,7 @@ namespace PropertiesAPI.Models
     {
         public int PropertyID { get; set; }
         public int OwnerID { get; set; }
+        public int RenterID { get; set; }
         public string Address { get; set; }
         public string Image { get; set; }
         public string Owner { get; set; }

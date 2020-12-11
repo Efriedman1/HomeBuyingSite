@@ -62,7 +62,7 @@ namespace WalletAPI.Controllers
                 objCommand.Parameters.AddWithValue("@PaymentDate", pay.PaymentDate);
                // objCommand.Parameters.AddWithValue("@PaymentID", pay.PaymentID);
                 objCommand.Parameters.AddWithValue("@PropertyID", pay.PropertyID);
-                objCommand.Parameters.AddWithValue("@RenterID", 7);
+                objCommand.Parameters.AddWithValue("@RenterID", pay.RenterID);
                 objCommand.Parameters.AddWithValue("@PaymentAmount", pay.PaymentAmount);
                 
                 int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
