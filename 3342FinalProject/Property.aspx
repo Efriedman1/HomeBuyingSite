@@ -6,7 +6,7 @@
     <div class="row mt-3">
         <div class="col-2"></div>
         <div class="card col-8">
-            <h1>Property</h1>
+            <h3>Property</h3>
             <asp:Image ID="imgProperty" runat="server" Height="140px" Width="120px" />
             <asp:Label ID="lblProperty" runat="server"></asp:Label>
             <asp:Label ID="lblAddress" runat="server"></asp:Label>

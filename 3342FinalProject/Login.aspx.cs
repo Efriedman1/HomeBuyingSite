@@ -40,8 +40,7 @@ namespace _3342FinalProject
             {
                 Session["UserID"] = userId;
                 Session["UserType"] = utility.GetUserByID(userId).Tables[0].Rows[0][5];
-                utility.PrintToDebug(userId, "Login ID");
-                utility.PrintToDebug((int)Session["UserType"], "Login User Type");
+
                 if (chkCookies.Checked)
                 {
                     saveCookies();
