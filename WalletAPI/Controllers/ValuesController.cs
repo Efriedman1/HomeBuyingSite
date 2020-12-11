@@ -62,8 +62,8 @@ namespace WalletAPI.Controllers
                 objCommand.Parameters.AddWithValue("@PaymentDate", pay.PaymentDate);
                // objCommand.Parameters.AddWithValue("@PaymentID", pay.PaymentID);
                 objCommand.Parameters.AddWithValue("@PropertyID", pay.PropertyID);
-                objCommand.Parameters.AddWithValue("@RenterID", 1);
-                objCommand.Parameters.AddWithValue("@PaymentAmount", 500);
+                objCommand.Parameters.AddWithValue("@RenterID", 7);
+                objCommand.Parameters.AddWithValue("@PaymentAmount", pay.PaymentAmount);
                 
                 int retVal = objDB.DoUpdateUsingCmdObj(objCommand);
 
@@ -92,7 +92,7 @@ namespace WalletAPI.Controllers
 
                 objCommand.Parameters.AddWithValue("@PaymentID", pay.PaymentID);
                 objCommand.Parameters.AddWithValue("@PaymentAmount", pay.PaymentAmount);
-                objCommand.Parameters.AddWithValue("@PaymentDate", "12/10");
+                objCommand.Parameters.AddWithValue("@PaymentDate", DateTime.Now.ToString());
                 //objCommand.Parameters.AddWithValue("@PaymentFullfilled", pay.PaymentFullfilled);
                 //objCommand.Parameters.AddWithValue("@RenterID", pay.RenterID);
                 //objCommand.Parameters.AddWithValue("@PropertyID", pay.PropertyID);
